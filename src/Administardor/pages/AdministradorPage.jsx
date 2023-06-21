@@ -1,24 +1,30 @@
-import React from 'react'
+import "../../Assets/styles/styles-admin/Admin-home.css";
 
 export const AdministradorPage = () => {
-    return (
+  return (
+    <>
+      <div className="mt-6 d-flex flex-column align-items-center justify-content-center">
+        <h3>Bienvenido al Módulo de Administrador</h3>
+        <div className="btn'group">
+        <button className="btn btn-primary m-1"> Registrar docentes</button>
+        <button className="btn btn-primary m-1">
+            {" "}
+            Seleccionar jefe de departamento
+          </button>
+        <button className="btn btn-primary m-1">
+            {" "}
+            Seleccionar coordinador de carrera
+          </button>
+        </div>
+      </div>
 
-        <>
-        <h1>Necesito que bajes la informacion porque se esconde en el navbar</h1>
-        <h1>Bienvenido al modulo de administrador</h1>
-        
-            <div>
-                <button> Registrar docentes</button>
-                <hr />
-            </div>
-            <div>
-                <button> Seleccionar jefe de departamento</button>
-                <hr />
-            </div>
-            <div>
-                <button> Seleccionar coordinador de carrera</button>
-                <hr />
-            </div>
-        </>
-    )
-}
+      <div>
+      <ul className="z-0 position-absolute top-50 start-50 translate-middle">
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+      </div>
+    </>
+  );
+};

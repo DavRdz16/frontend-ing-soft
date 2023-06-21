@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import  { useState } from "react";
 // import 'bootstrap/dist/css/bootstrap.css'
 // import axios from 'axios'
 // import { postData } from './helpers/fetchApi'
@@ -34,7 +34,7 @@ export const LoginAdmin = () => {
   return (
     <>
       <div className="d-flex vh-100 justify-content-center align-items-center bg-primary ">
-        <div className="form">
+        <div className="form z-1">
           <br />
           <h2>Inicio de Sesión de Administrador</h2>
           <br />
@@ -46,7 +46,7 @@ export const LoginAdmin = () => {
               <input
                 type="email"
                 placeholder="ejemplo@gmail.com"
-                className="rounded-0 form-control"
+                className="rounded-3 form-control"
                 name="email"
                 onChange={handleInput}
               />
@@ -61,7 +61,7 @@ export const LoginAdmin = () => {
               <input
                 type="password"
                 placeholder="Ingrese su contraseña"
-                className="rounded-0 form-control"
+                className="rounded-3 form-control"
                 name="password"
                 onChange={handleInput}
               />
@@ -90,9 +90,9 @@ export const LoginAdmin = () => {
           </form>
         </div>
 
-        <div className="footer z-n1 position-absolute bottom-0 start-50 translate-middle-x">
+        {/* <div className="footer z-n1 position-absolute bottom-0 start-50 translate-middle-x">
           <img src="../src/Assets/img/footer-bg.png" alt="" />
-        </div>
+        </div> */}
       </div>
     </>
   );

@@ -1,4 +1,4 @@
-import React from 'react'
+
 import { Navigate, Route, Routes } from 'react-router-dom'
 import { LandingPage } from '../IU/pages/LandingPage'
 import { Navbar } from '../IU/components/Navbar'

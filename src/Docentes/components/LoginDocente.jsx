@@ -43,7 +43,7 @@ export const LoginDocente = () => {
             <input
               type="email"
               placeholder="ejemplo@gmail.com"
-              className="rounded-0 form-control"
+              className="rounded-3 form-control"
               name="email"
               onChange={handleInput}
             />
@@ -56,7 +56,7 @@ export const LoginDocente = () => {
             <input
               type="password"
               placeholder="Ingrese su contraseña"
-              className="rounded-0 form-control"
+              className="rounded-3 form-control"
               name="password"
               onChange={handleInput}
             />
@@ -80,9 +80,9 @@ export const LoginDocente = () => {
         </form>
       </div>
 
-      <div className="footer z-n1 position-absolute bottom-0 start-50 translate-middle-x">
+      {/* <div className="footer z-n1 position-absolute bottom-0 start-50 translate-middle-x">
         <img src="../src/Assets/img/footer-bg.png" alt="" />
-      </div>
+      </div> */}
     </div>
   );
 };
