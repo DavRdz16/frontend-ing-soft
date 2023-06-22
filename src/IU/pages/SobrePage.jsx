@@ -2,6 +2,9 @@ import React from 'react'
 
 export const SobrePage = () => {
   return (
-    <div>SobrePage</div>
+    <>
+    <h1>a</h1>
+    <h1>SobrePage</h1>
+    </>
   )
 }

@@ -2,7 +2,7 @@ import React from 'react'
 import { Link, NavLink } from 'react-router-dom';
 
 
-export const Navbar = () => {
+export const NavbarGeneral = () => {
     return (
         <nav className="navbar navbar-expand-sm navbar-dark bg-dark p-2 fixed-top">
 

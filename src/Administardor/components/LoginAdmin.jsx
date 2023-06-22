@@ -22,7 +22,7 @@ export const LoginAdmin = () => {
     const handleSubmit = (event) => {
         event.preventDefault()
         // setError(validation(values))
-        navigate('/home/administrador')
+        navigate('/administrador/home')
         // axios.post('http://localhost:8081/login', { email, password })
         // .then( navigate('/home/administrador'))
         // .catch(err => console.log(err));

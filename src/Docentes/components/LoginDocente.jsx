@@ -2,13 +2,14 @@ import React, { useState } from 'react'
 // import 'bootstrap/dist/css/bootstrap.css'
 // import axios from 'axios'
 // import { postData } from './helpers/fetchApi'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 // import { validation } from './LoginValidation'
 
 
 
 
 export const LoginDocente = () => {
+    const navigate = useNavigate()
 
     const [values, setValues] = useState({
         email: '',
@@ -19,8 +20,8 @@ export const LoginDocente = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault()
-        setError(validation(values))
-
+        // setError(validation(values))
+        navigate('/docente/home')
         // axios.post('http://localhost:8081/login', { email, password })
         //     .then( navgiate('/home'))
         //     .catch(err => console.log(err));
