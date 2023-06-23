@@ -9,6 +9,7 @@ export const DocenteRoutes = () => {
       <NavbarEspecifico />
       <Routes>
         <Route path='/home' element={<LandingDocentePage/>} />
+        
       </Routes>
     </>
   )

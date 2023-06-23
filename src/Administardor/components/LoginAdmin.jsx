@@ -1,9 +1,8 @@
 import React, { useState } from 'react'
-// import 'bootstrap/dist/css/bootstrap.css'
-// import axios from 'axios'
-// import { postData } from './helpers/fetchApi'
+import axios from 'axios'
 import { Link, useNavigate } from 'react-router-dom'
-// import { validation } from './LoginValidation'
+import { validacionRegisto } from '../helpers/ValidacionRegistro';
+
 
 
 
@@ -21,12 +20,23 @@ export const LoginAdmin = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault()
-        // setError(validation(values))
-        navigate('/administrador/home')
-        // axios.post('http://localhost:8081/login', { email, password })
-        // .then( navigate('/home/administrador'))
-        // .catch(err => console.log(err));
-        // postData(email, password);
+        setError(validacionRegisto(values))
+        const { email, password } = values;
+        axios.post('http://localhost:8081/login/administrador', { email, password })
+        .then(res => {
+            const {login, usuario, token} = res.data;
+            if (login) {
+                localStorage.setItem("token", token)
+                localStorage.setItem("login", login)
+                console.log({login, usuario, token});
+                alert('Inicio sesion exitoso')
+                navigate('/administrador/home')
+            }else{
+                console.log({login, usuario});
+                alert('El usuario no existe')
+            }
+        })
+        .catch(err => console.log(err));
     }
 
     const handleInput = (event) => {
@@ -40,7 +50,7 @@ export const LoginAdmin = () => {
                     <h2>Inicio sesión de administrador</h2>
                     <form onSubmit={handleSubmit}>
                         <div className='mb-3'>
-                            <label htmlFor="email"><strong>Email</strong></label>
+                            <label htmlFor="email"><strong>Correo Electronico</strong></label>
                             <input type="email"
                                 placeholder='ejemplo@gmail.com'
                                 className='rounded-0 form-control'
@@ -49,7 +59,7 @@ export const LoginAdmin = () => {
                             {error.email && <span className='text-danger'>{error.email}</span>}
                         </div>
                         <div className='mb-3'>
-                            <label htmlFor="password"><strong>Password</strong></label>
+                            <label htmlFor="password"><strong>Contraseña</strong></label>
                             <input type="password"
                                 placeholder='Ingrese su contraseña'
                                 className='rounded-0 form-control'
@@ -60,13 +70,8 @@ export const LoginAdmin = () => {
                         <button
                             type='submit'
                             className='btn btn-success form-control'>
-                            Log In
+                            Iniciar sesión
                         </button>
-                        <p>Acepas nuestros terminos y condiciones</p>
-                        <Link to="/signup"
-                            className='btn btn-default border w-100 bg-light text-decoration-none'>
-                            Create acount
-                        </Link>
                     </form>
                 </div>
             </div>

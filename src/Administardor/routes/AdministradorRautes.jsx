@@ -2,6 +2,8 @@ import React from 'react'
 import { LandingAdministradorPage } from '../pages/LandingAdministradorPage'
 import { Route, Routes } from 'react-router-dom'
 import { NavbarEspecifico } from '../../IU/components/NavbarEspecifico'
+import { RegistroDocentePage } from '../pages/RegistroDocentePage'
+import { RegistroEstudiantePage } from '../pages/RegistroEstudiantePage'
 
 export const AdministradorRautes = () => {
   return (
@@ -9,6 +11,8 @@ export const AdministradorRautes = () => {
       <NavbarEspecifico />
       <Routes>
         <Route path='/home' element={<LandingAdministradorPage />} />
+        <Route path='/RegistroDocente' element={<RegistroDocentePage />} />
+        <Route path='/RegistroEstudiante' element={<RegistroEstudiantePage />} />
       </Routes>
     </>
   )

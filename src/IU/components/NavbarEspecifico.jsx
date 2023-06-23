@@ -31,6 +31,16 @@ export const NavbarEspecifico = () => {
                     </NavLink>
                 </div>
             </div>
+            <div className="navbar-collapse collapse w-100 order-3 dual-collapse2">
+                <ul className="navbar-nav ml-auto">
+                    <NavLink
+                        className="nav-item nav-link"
+                        to="/login"
+                    >
+                        Logout
+                    </NavLink>
+                </ul>
+            </div>
 
             {/* <div className="navbar-collapse collapse w-100 order-3 dual-collapse2 d-flex justify-content-end">
                 <ul className="navbar-nav ml-auto">

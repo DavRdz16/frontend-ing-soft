@@ -1,6 +1,15 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 export const LandingAdministradorPage = () => {
+
+    const navigate = useNavigate()
+    const onNavRegistroDocente = () => {
+        navigate('/administrador/RegistroDocente')
+    }
+    const onNavRegistroEstudiante = () => {
+        navigate('/administrador/RegistroEstudiante')
+    }
     return (
 
         <>
@@ -8,7 +17,11 @@ export const LandingAdministradorPage = () => {
         <h1>Bienvenido al modulo de administrador</h1>
         
             <div>
-                <button> Registrar docentes</button>
+                <button onClick={onNavRegistroDocente}>Registrar docentes</button>
+                <hr />
+            </div>
+            <div>
+                <button onClick={onNavRegistroEstudiante}>Registrar Estudiantes</button>
                 <hr />
             </div>
             <div>
