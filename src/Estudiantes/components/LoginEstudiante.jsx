@@ -1,13 +1,12 @@
-import React, { useState } from "react";
-// import 'bootstrap/dist/css/bootstrap.css'
-// import axios from 'axios'
-// import { postData } from './helpers/fetchApi'
-import { Link } from "react-router-dom";
-// import { validation } from './LoginValidation'
-import "../../Assets/styles/styles-forms/Forms-styles.css";
-import "../../Assets/styles/styles-landing/Footer-styles.css";
+import React, { useState } from 'react'
+import axios from 'axios'
+import { Link, useNavigate } from 'react-router-dom'
+import { validacionRegisto } from '../../Administardor/helpers/ValidacionRegistro';
+
 
 export const LoginEstudiante = () => {
+    const navigate = useNavigate();
+
   const [values, setValues] = useState({
     email: "",
     password: "",
@@ -17,74 +16,60 @@ export const LoginEstudiante = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    setError(validation(values));
-
-    // axios.post('http://localhost:8081/login', { email, password })
-    //     .then( navgiate('/home'))
-    //     .catch(err => console.log(err));
-    // postData(email, password);
+    setError(validacionRegisto(values));
+    const { email, password } = values;
+        axios.post('http://localhost:8081/login/estudiante', { email, password })
+        .then(res => {
+                const { login, usuario, token } = res.data;
+                if (login) {
+                localStorage.setItem("token", token)
+                    localStorage.setItem("login", login)
+                    console.log({ login, usuario, token });
+                alert('Inicio sesion exitoso')
+                    navigate('/estudiante/home')
+                } else {
+                    console.log({ login, usuario });
+                    alert('El usuario no existe')
+                }
+            })
+            .catch(err => console.log(err));
   };
 
   const handleInput = (event) => {
     setValues((prev) => ({ ...prev, [event.target.name]: event.target.value }));
   };
 
-  return (
-    <div className="d-flex vh-100 justify-content-center align-items-center bg-primary ">
-      <div className="form">
-        <br />
-        <h2>Inicio Sesión de Estudiante</h2>
-        <br />
-        <form onSubmit={handleSubmit}>
-          <div className="mb-3">
-            <label htmlFor="email">
-              <strong>Correo Electrónico</strong>
-            </label>
-            <input
-              type="email"
-              placeholder="ejemplo@gmail.com"
-              className="rounded-3 form-control"
-              name="email"
-              onChange={handleInput}
-            />
-            {error.email && <span className="text-danger">{error.email}</span>}
-          </div>
-          <div className="mb-3">
-            <label htmlFor="password">
-              <strong>Contraseña</strong>
-            </label>
-            <input
-              type="password"
-              placeholder="Ingrese su contraseña"
-              className="rounded-3 form-control"
-              name="password"
-              onChange={handleInput}
-            />
-            {error.password && (
-              <span className="text-danger">{error.password}</span>
-            )}
-          </div>
-          <p>
-            Recuerda que como estudiante <br /> tu correo termina en @unah.hn
-          </p>
-          <button type="submit" className="btn btn-success form-control">
-            Iniciar Sesión
-          </button>
-          <br />
-          <br />
-          <p>Al hacer click estas aceptando nuestros términos y condiciones</p>
-          <Link
-            to="/signup"
-            className="btn btn-default border w-100 bg-light text-decoration-none"
-          >
-            Regístrate
-          </Link>
-        </form>
-      </div>
+    return (
+        <div className='d-flex vh-100 justify-content-center align-items-center bg-primary '>
+            <div className='p-3 bg-white w-25 '>
+                <h2>Inicio sesión de estudiantes</h2>
+                <form onSubmit={handleSubmit}>
+                    <div className='mb-3'>
+                        <label htmlFor="email"><strong>Correo Electronico</strong></label>
+                        <input type="email"
+                            placeholder='ejemplo@gmail.com'
+                            className='rounded-0 form-control'
+                            name='email'
+                            onChange={handleInput} />
+                        {error.email && <span className='text-danger'>{error.email}</span>}
+                    </div>
+                    <div className='mb-3'>
+                        <label htmlFor="password"><strong>Contraseña</strong></label>
+                        <input type="password"
+                            placeholder='Ingrese su contraseña'
+                            className='rounded-0 form-control'
+                            name='password'
+                            onChange={handleInput} />
+                        {error.password && <span className='text-danger'>{error.password}</span>}
+                    </div>
+                    <button
+                        type='submit'
+                        className='btn btn-success form-control'>
+                        Iniciar Sesión
+                    </button>
 
-      {/* <div className="footer z-n1 position-absolute bottom-0 start-50 translate-middle-x">
-        <img src="../src/Assets/img/footer-bg.png" alt="" />
-      </div> */}
-    </div>
-  );
-};
+                </form>
+            </div>
+        </div>
+    )
+}
