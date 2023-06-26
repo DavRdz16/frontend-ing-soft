@@ -13,10 +13,13 @@ export const LandingAdministradorPage = () => {
   return (
     <>
       <div className="mt-6 d-flex flex-column align-items-center justify-content-center">
-        <div className="btn'group">
+        <br />
+        <h2>Bienvenido Administrador</h2>
+        <br />
+        <div className="btn-group d-flex align-items-center justify-content-center">
           <div>
             <button
-              className="btn btn-primary m-1"
+              className="btn btn-w btn-h btn-primary m-1"
               onClick={onNavRegistroDocente}
             >
               Registrar docentes
@@ -24,20 +27,20 @@ export const LandingAdministradorPage = () => {
           </div>
           <div>
             <button
-              className="btn btn-primary m-1"
+              className="btn btn-w btn-h btn-primary m-1"
               onClick={onNavRegistroEstudiante}
             >
               Registrar Estudiantes
             </button>
           </div>
           <div>
-            <button className="btn btn-primary m-1">
+            <button className="btn btn-w btn-h btn-primary m-1">
               {" "}
               Seleccionar jefe de departamento
             </button>
           </div>
           <div>
-            <button className="btn btn-primary m-1">
+            <button className="btn btn-w btn-h btn-primary m-1">
               {" "}
               Seleccionar coordinador de carrera
             </button>

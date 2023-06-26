@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { validacionRegisto } from "../helpers/ValidacionRegistro";
 import "../../Assets/styles/styles-forms/Forms-styles.css";
-import "../../Assets/styles/styles-landing/Footer-styles.css";
 
 export const LoginAdmin = () => {
   const navigate = useNavigate();
