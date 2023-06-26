@@ -1,48 +1,48 @@
-import React from 'react'
-import { Link, NavLink } from 'react-router-dom';
-
+import React from "react";
+import { Link, NavLink } from "react-router-dom";
+import "../../Assets/styles/styles-landing/Navbar-styles.css";
 
 export const NavbarEspecifico = () => {
-    return (
-        <nav className="navbar navbar-expand-sm navbar-dark bg-dark p-2 fixed-top">
+  return (
+    <nav className="navbar navbar-expand-sm navbar-dark bg-dark p-2 fixed-top">
+      <Link className="navbar-brand" to="/">
+        <img
+          src="../src/Assets/img/logo-unah-blanco.png"
+          alt="UNAH"
+          className="logo-unah"
+        />
+      </Link>
 
-            <Link
-                className="navbar-brand"
-                to="/"
-            >
-                UNAH
-            </Link>
+      <div className="navbar-collapse">
+        <div className="navbar-nav">
+          <NavLink
+            className={({ isActive }) =>
+              `nav-item nav-link ${isActive ? "active" : ""}`
+            }
+            to="/"
+          >
+            <button className="btn btn-primary">Inicio</button>
+          </NavLink>
 
-            <div className="navbar-collapse">
-                <div className="navbar-nav">
+          <NavLink
+            className={({ isActive }) =>
+              `nav-item nav-link ${isActive ? "active" : ""}`
+            }
+            to="/sobre"
+          >
+            <button className="btn btn-primary">Sobre</button>
+          </NavLink>
+        </div>
+      </div>
+      <div className="navbar-collapse collapse w-100 order-3 dual-collapse2 d-flex justify-content-end">
+        <ul className="navbar-nav ml-auto">
+          <NavLink className="nav-item nav-link" to="/login">
+            <button className="btn btn-primary">Cerrar Sesión</button>
+          </NavLink>
+        </ul>
+      </div>
 
-                    <NavLink
-                        className={({ isActive }) => `nav-item nav-link ${isActive ? 'active' : ''}`}
-                        to="/"
-                    >
-                        Inicio
-                    </NavLink>
-
-                    <NavLink
-                        className={({ isActive }) => `nav-item nav-link ${isActive ? 'active' : ''}`}
-                        to="/sobre"
-                    >
-                        Sobre
-                    </NavLink>
-                </div>
-            </div>
-            <div className="navbar-collapse collapse w-100 order-3 dual-collapse2">
-                <ul className="navbar-nav ml-auto">
-                    <NavLink
-                        className="nav-item nav-link"
-                        to="/login"
-                    >
-                        Logout
-                    </NavLink>
-                </ul>
-            </div>
-
-            {/* <div className="navbar-collapse collapse w-100 order-3 dual-collapse2 d-flex justify-content-end">
+      {/* <div className="navbar-collapse collapse w-100 order-3 dual-collapse2 d-flex justify-content-end">
                 <ul className="navbar-nav ml-auto">
                     <NavLink
                         // className={({ isActive }) => `nav-item nav-link ${isActive ? 'active' : ''}`}
@@ -65,6 +65,6 @@ export const NavbarEspecifico = () => {
                     </NavLink>
                 </ul>
             </div> */}
-        </nav>
-    )
-}
+    </nav>
+  );
+};
