@@ -56,7 +56,7 @@ export const LoginDocente = () => {
               <input
                 type="email"
                 placeholder="ejemplo@gmail.com"
-                className="rounded-0 form-control"
+                className="rounded-3 form-control"
                 name="email"
                 onChange={handleInput}
               />

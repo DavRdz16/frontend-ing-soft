@@ -9,3 +9,7 @@ body {
 .bg-primary{
   background-color: #E8F1F2 !important;
 }
+
+h1,h2,h3{
+  color: #006494;
+}
