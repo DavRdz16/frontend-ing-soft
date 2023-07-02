@@ -1,10 +1,16 @@
 import React from "react";
 
+
 export const LandingDocentePage = () => {
+
+
+
+
   return (
     <>
+
       <div className="mt-6 d-flex vh-100 flex-column align-items-center bg-primary ">
-      <h3 className="mt-6">En construcción</h3>
+        <h3 className="mt-6">En construcción Landin del Docente</h3>
         <ul className="z-0 position-absolute top-50 start-50 translate-middle">
           <li></li>
           <li></li>

@@ -1,4 +1,4 @@
-@keyframes loading {
+/* @keyframes loading {
   0% {
     transform: rotate(0deg);
   }
@@ -45,4 +45,4 @@ li:nth-child(3) {
   width: 20px;
   height: 20px;
   animation: loading 1s infinite linear;
-}
+} */

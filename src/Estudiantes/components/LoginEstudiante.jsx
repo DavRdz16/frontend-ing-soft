@@ -13,11 +13,11 @@ export const LoginEstudiante = () => {
     password: "",
   });
 
-  const [error, setError] = useState({});
+  // const [error, setError] = useState({});
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    setError(validacionRegisto(values));
+    // setError(validacionRegisto(values));
     const { email, password } = values;
     axios
       .post("http://localhost:8081/login/estudiante", { email, password })
@@ -60,9 +60,9 @@ export const LoginEstudiante = () => {
                 name="email"
                 onChange={handleInput}
               />
-              {error.email && (
+              {/* {error.email && (
                 <span className="text-danger">{error.email}</span>
-              )}
+              )} */}
             </div>
             <div className="mb-3">
               <label htmlFor="password">
@@ -75,10 +75,11 @@ export const LoginEstudiante = () => {
                 name="password"
                 onChange={handleInput}
               />
-              {error.password && (
+              {/* {error.password && (
                 <span className="text-danger">{error.password}</span>
-              )}
+              )} */}
             </div>
+            <Link to='/recuperacion/estudiante'>Olvidaste tu contraseña?</Link>
             <p>
               Recuerda que como estudiante <br /> tu correo termina en @unah.hn
             </p>
@@ -90,6 +91,7 @@ export const LoginEstudiante = () => {
             <p>
               Al hacer click estas aceptando nuestros términos y condiciones
             </p>
+
           </form>
         </div>
       </div>

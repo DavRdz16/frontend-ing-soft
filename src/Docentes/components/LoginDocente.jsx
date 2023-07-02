@@ -13,19 +13,21 @@ export const LoginDocente = () => {
     password: "",
   });
 
-  const [error, setError] = useState({});
+  // const [error, setError] = useState({});
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    setError(validacionRegisto(values));
+    // setError(validacionRegisto(values));
     const { email, password } = values;
     axios
       .post("http://localhost:8081/login/docente", { email, password })
       .then((res) => {
         const { login, usuario, token } = res.data;
+        console.log(usuario[0].cargo);
         if (login) {
           localStorage.setItem("token", token);
           localStorage.setItem("login", login);
+          localStorage.setItem("cargo", usuario[0].cargo);
           console.log({ login, usuario, token });
           alert("Inicio sesion exitoso");
           navigate("/docente/home");
@@ -60,9 +62,9 @@ export const LoginDocente = () => {
                 name="email"
                 onChange={handleInput}
               />
-              {error.email && (
+              {/* {error.email && (
                 <span className="text-danger">{error.email}</span>
-              )}
+              )} */}
             </div>
             <div className="mb-3">
               <label htmlFor="password">
@@ -75,9 +77,9 @@ export const LoginDocente = () => {
                 name="password"
                 onChange={handleInput}
               />
-              {error.password && (
+              {/* {error.password && (
                 <span className="text-danger">{error.password}</span>
-              )}
+              )} */}
             </div>
             <p>
               Recuerda que si eres docente o administrador <br /> tu correo

@@ -12,11 +12,11 @@ export const LoginAdmin = () => {
     password: "",
   });
 
-  const [error, setError] = useState({});
+  // const [error, setError] = useState({});
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    setError(validacionRegisto(values));
+    // setError(validacionRegisto(values));
     const { email, password } = values;
     axios
       .post("http://localhost:8081/login/administrador", { email, password })
@@ -59,9 +59,9 @@ export const LoginAdmin = () => {
                 name="email"
                 onChange={handleInput}
               />
-              {error.email && (
+              {/* {error.email && (
                 <span className="text-danger">{error.email}</span>
-              )}
+              )} */}
             </div>
             <div className="mb-3">
               <label htmlFor="password">
@@ -74,9 +74,9 @@ export const LoginAdmin = () => {
                 name="password"
                 onChange={handleInput}
               />
-              {error.password && (
+              {/* {error.password && (
                 <span className="text-danger">{error.password}</span>
-              )}
+              )} */}
             </div>
             <p>
               Recuerda que si eres docente o administrador <br /> tu correo
