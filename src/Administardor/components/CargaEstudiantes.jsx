@@ -51,7 +51,7 @@ export const CargaEstudiantes = () => {
         <br />
         <div className="carga">
           <input className="form-control mb-3" type="file" id="formFile" onChange={handleFileUpload} />
-          <button className="btn btn-w btn-success mt-3" onClick={handleSubmit}>Enviar</button>
+          <button className="btn btn-w btn-success mt-3" onClick={handleSubmit}>Subir Estudiantes</button>
           <p>{msg?.message}</p>
         </div>
       </div>
