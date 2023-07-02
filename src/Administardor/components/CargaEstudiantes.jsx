@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { convertirCsvToJson } from "../helpers/convertirCsvToJson";
 import "../../Assets/styles/styles-admin/Admin-carga-estudiante.css"
 import "../../Assets/styles/styles-admin/Admin-home.css"
