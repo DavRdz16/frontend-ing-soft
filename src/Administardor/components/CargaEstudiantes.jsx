@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { convertirCsvToJson } from "../helpers/convertirCsvToJson";
-import "../../Assets/styles/styles-admin/Admin-carga-estudiante.css"
-import "../../Assets/styles/styles-admin/Admin-home.css"
+import "../../Assets/styles/styles-admin/Admin-carga-estudiante.css";
+import "../../Assets/styles/styles-admin/Admin-home.css";
 
 export const CargaEstudiantes = () => {
   const [msg, setMsg] = useState({});
@@ -50,8 +50,15 @@ export const CargaEstudiantes = () => {
         <p>Seleccione el archivo CSV con los datos de los estudiantes</p>
         <br />
         <div className="carga">
-          <input className="form-control mb-3" type="file" id="formFile" onChange={handleFileUpload} />
-          <button className="btn btn-w btn-success mt-3" onClick={handleSubmit}>Subir Estudiantes</button>
+          <input
+            className="form-control mb-3"
+            type="file"
+            id="formFile"
+            onChange={handleFileUpload}
+          />
+          <button className="btn btn-w btn-success mt-3" onClick={handleSubmit}>
+            Subir Estudiantes
+          </button>
           <p>{msg?.message}</p>
         </div>
       </div>

@@ -12,7 +12,7 @@ export const LandingAdministradorPage = () => {
   };
   return (
     <>
-      <div className="mt-6 d-flex flex-column align-items-center justify-content-center">
+      <div className="d-flex flex-column align-items-center justify-content-center">
         <br />
         <h2>Bienvenido Administrador</h2>
         <br />
