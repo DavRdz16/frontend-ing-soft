@@ -40,13 +40,13 @@ export const RecuperacionDocentePage = () => {
 
   return (
     <>
-      <div className="">
-        <ul id="card-doc" >
-          {docentes.map((docente) => (
-            <DocenteCard key={docente.identidad} docente={docente} />
-          ))}
-        </ul>
-      </div>
+      <div className="container">
+          <ul id="card-doc" className="row">
+            {docentes.map((docente) => (
+              <DocenteCard key={docente.identidad} docente={docente} />
+            ))}
+          </ul>
+        </div>
     </>
   );
 };

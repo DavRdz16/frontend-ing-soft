@@ -14,8 +14,17 @@ import { RestablecerPage } from '../Estudiantes/pages/RestablecerPage'
 import { RestablePassDocentePage } from '../Docentes/pages/RestablePassDocentePage'
 
 export const AppRouter = () => {
+
+  // const shouldRenderNavbar = () => {
+  //   const currentPath = window.location.pathname;
+  //   return !currentPath.startsWith('/administrador') &&
+  //     !currentPath.startsWith('/docente') &&
+  //     !currentPath.startsWith('/estudiante');
+  // };
+  
   return (
     <>
+      {/* {shouldRenderNavbar() && <NavbarGeneral />} */}
       <NavbarGeneral />
       <Routes>
 
