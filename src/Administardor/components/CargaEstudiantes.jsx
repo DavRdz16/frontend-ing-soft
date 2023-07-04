@@ -7,6 +7,7 @@ export const CargaEstudiantes = () => {
   const [msg, setMsg] = useState({});
   const [file, setFile] = useState();
   const [json, setJson] = useState([{}]);
+  
 
   const handleFileUpload = (event) => {
     const file = event.target.files[0];

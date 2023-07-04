@@ -79,7 +79,7 @@ export const LoginEstudiante = () => {
                 <span className="text-danger">{error.password}</span>
               )} */}
             </div>
-            <Link to='/recuperacion/estudiante'>Olvidaste tu contraseña?</Link>
+            <Link className="d-flex justify-content-end" to='/recuperacion/estudiante'>Olvidaste tu contraseña?</Link>
             <p>
               Recuerda que como estudiante <br /> tu correo termina en @unah.hn
             </p>
