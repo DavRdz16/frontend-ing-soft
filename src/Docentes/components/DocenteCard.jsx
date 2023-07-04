@@ -28,7 +28,7 @@ export const DocenteCard = ({ docente }) => {
 
   return (
     <>
-      <div className="card">
+      <div className="card m-3 ">
         {/* <img src={foto} alt={`Foto de ${nombres} ${apellidos}`} /> */}
         <div className="card-body">
           <h5 className="card-title">Docente: {nombres} {apellidos}</h5>

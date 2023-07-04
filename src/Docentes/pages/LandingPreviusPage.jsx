@@ -1,24 +1,19 @@
-import React from 'react';
-import { LandingDocentePage } from './LandingDocentePage';
-import { LandingCoordiPage } from './LandingCoordiPage';
-import { LandingJefePage } from './LandingJefePage';
+import { LandingDocentePage } from "./LandingDocentePage";
+import { LandingCoordiPage } from "./LandingCoordiPage";
+import { LandingJefePage } from "./LandingJefePage";
 
 export const LandingPreviusPage = () => {
-    const cargo = localStorage.getItem('cargo');
+  const cargo = localStorage.getItem("cargo");
 
-    let renderedPage = null;
+  let renderedPage = null;
 
-    if (cargo === 'Docente') {
-        renderedPage = <LandingDocentePage />;
-    } else if (cargo === 'Coordinador') {
-        renderedPage = <LandingCoordiPage />;
-    } else if (cargo === 'Jefe') {
-        renderedPage = <LandingJefePage />;
-    }
+  if (cargo === "Docente") {
+    renderedPage = <LandingDocentePage />;
+  } else if (cargo === "Coordinador") {
+    renderedPage = <LandingCoordiPage />;
+  } else if (cargo === "Jefe") {
+    renderedPage = <LandingJefePage />;
+  }
 
-    return (
-        <>
-            {renderedPage}
-        </>
-  )
+  return <>{renderedPage}</>;
 };

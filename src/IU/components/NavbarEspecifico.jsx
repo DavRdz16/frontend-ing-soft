@@ -8,7 +8,7 @@ export const NavbarEspecifico = () => {
         <nav className="navbar navbar-expand-sm navbar-dark bg-dark p-2 fixed-top">
           <Link className="navbar-brand" to="/">
             <img
-              src="../src/Assets/img/logo-unah-blanco.png"
+              src="../../src/Assets/img/logo-unah-blanco.png"
               alt="UNAH"
               className="logo-unah"
             />

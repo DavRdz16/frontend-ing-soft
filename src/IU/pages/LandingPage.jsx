@@ -1,4 +1,3 @@
-import React from 'react'
 import "../../Assets/styles/styles-landing/Landin-styles.css";
 import "../../Assets/styles/styles-landing/Footer-styles.css";
 export const LandingPage = () => {
