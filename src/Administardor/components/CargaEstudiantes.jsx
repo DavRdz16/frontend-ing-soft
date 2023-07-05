@@ -35,7 +35,7 @@ export const CargaEstudiantes = () => {
       .then((data) => {
         // Procesar la respuesta del backend si es necesario
         setMsg(data);
-        console.log(data);
+        // console.log(data);
       })
       .catch((error) => {
         console.error("Error al enviar los datos al backend:", error);

@@ -11,7 +11,7 @@ export const LandingPreviusPage = () => {
     renderedPage = <LandingDocentePage />;
   } else if (cargo === "Coordinador") {
     renderedPage = <LandingCoordiPage />;
-  } else if (cargo === "Jefe") {
+  } else if (cargo === "Jefe de departamento") {
     renderedPage = <LandingJefePage />;
   }
 
