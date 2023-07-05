@@ -214,6 +214,9 @@ export const RegistroDocete = () => {
                 />
               </div>
               <div>
+              <label htmlFor="foto">
+                  <strong>Asignar Centro</strong>
+                </label>
                 <select
                   value={formState.centro}
                   name="centro"
