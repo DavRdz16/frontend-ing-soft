@@ -10,6 +10,12 @@ export const LandingAdministradorPage = () => {
   const onNavRegistroEstudiante = () => {
     navigate("/administrador/RegistroEstudiante");
   };
+
+  const onNavRolDocente = () => {
+    navigate("/administrador/RolDocente");
+  };
+
+
   return (
     <>
       <div className="d-flex flex-column align-items-center justify-content-center">
@@ -34,17 +40,12 @@ export const LandingAdministradorPage = () => {
             </button>
           </div>
           <div>
-            <button className="btn btn-w btn-h btn-primary m-1">
-              {" "}
-              Seleccionar jefe de departamento
+            <button className="btn btn-w btn-h btn-primary m-1" onClick={onNavRolDocente}>
+              
+              Seleccionar rol del docente
             </button>
           </div>
-          <div>
-            <button className="btn btn-w btn-h btn-primary m-1">
-              {" "}
-              Seleccionar coordinador de carrera
-            </button>
-          </div>
+
         </div>
       </div>
     </>

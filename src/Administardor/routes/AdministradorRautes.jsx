@@ -4,6 +4,7 @@ import { Route, Routes } from 'react-router-dom'
 import { NavbarEspecifico } from '../../IU/components/NavbarEspecifico'
 import { RegistroDocentePage } from '../pages/RegistroDocentePage'
 import { RegistroEstudiantePage } from '../pages/RegistroEstudiantePage'
+import {RolDocentePage} from '../pages/RolDocentePage'
 
 export const AdministradorRautes = () => {
   return (
@@ -13,6 +14,8 @@ export const AdministradorRautes = () => {
         <Route path='/home' element={<LandingAdministradorPage />} />
         <Route path='/RegistroDocente' element={<RegistroDocentePage />} />
         <Route path='/RegistroEstudiante' element={<RegistroEstudiantePage />} />
+
+        <Route path='/RolDocente' element={<RolDocentePage />} />
       </Routes>
     </>
   )
