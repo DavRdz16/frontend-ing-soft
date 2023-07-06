@@ -7,8 +7,8 @@ export const DocenteCard = ({ docente }) => {
     apellidos,
     identidad,
     correo,
-    foto,
-    centro,
+    nombre_centro,
+    carrera,
     cargo,
   } = docente;
   const [message, setMessage] = useState("");
@@ -41,7 +41,7 @@ export const DocenteCard = ({ docente }) => {
             <h5 className="card-title">
               Docente: {nombres} {apellidos}
             </h5>
-            <img src={foto} alt={`Foto de ${nombres} ${apellidos}`} />
+            {/* <img src={foto} alt={`Foto de ${nombres} ${apellidos}`} /> */}
             <p className="card-text">
               Número de empleado: {num_empleado}
               <br />
@@ -49,7 +49,9 @@ export const DocenteCard = ({ docente }) => {
               <br />
               Correo: {correo}
               <br />
-              Centro: {centro}
+              Centro: {nombre_centro}
+              <br />
+              Centro: {carrera}
               <br />
               Cargo: {cargo}
             </p>

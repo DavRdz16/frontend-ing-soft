@@ -28,6 +28,8 @@ export const LoginDocente = () => {
           localStorage.setItem("token", token);
           localStorage.setItem("login", login);
           localStorage.setItem("cargo", usuario[0].cargo);
+          localStorage.setItem("id", usuario[0].num_empleado);
+          // console.log( usuario[0].num_empleado);
           console.log({ login, usuario, token });
           alert("Inicio sesion exitoso");
           navigate("/docente/home");

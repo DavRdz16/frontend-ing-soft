@@ -1,52 +1,66 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { empleados } from "./data";
 import { DocenteCard } from "../components/DocenteCard";
 import "../../Assets/styles/styles-docentes/Docente-lista.css";
 
-// ESTO NO LO ESTILES AUN
-// ESTO NO LO ESTILES AUN
-// ESTO NO LO ESTILES AUN
-// ESTO NO LO ESTILES AUN
-// ESTO NO LO ESTILES AUN
 
 export const RecuperacionDocentePage = () => {
   const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
+  const [docenteLogeado, setDocenteLogeado] = useState({});
+  const [docentesSeleccionado, setDocentesSeleccionado] = useState();
 
-  const docentes = empleados;
 
-  //Aqui necesito hacer una funcion con un useEffect que traiga todos los docentes
-  //del depto al que pertenece el jefe
+  useEffect(() => {
+    const id = localStorage.getItem('id');
+    if (id) {
+      fetch(`http://localhost:8081/docente/${id}`)
+        .then(response => response.json())
+        .then(data => {
+          //console.log(data[0]);
+          setDocenteLogeado(data[0])
+          
+        })
+        .catch(error => {
+          console.error('Error:', error);
+        });
+    }
+  }, []);
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const { carrera, centro_id } = docenteLogeado
+        // console.log({ carrera, centro_id });
+        const response = await fetch(
+          `http://localhost:8081/docentes/${carrera}/${centro_id}`);
+        const data = await response.json();
+        //console.log('datos:', data);
+        setDocentesSeleccionado(data)
 
-    fetch("http://localhost:8081/forgot-password", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ email }),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        setMessage(data.message);
-      })
-      .catch((error) => {
-        setMessage("Error al enviar la solicitud.");
-        console.error(error);
-      });
-  };
+      } catch (error) {
+        console.error("Error:", error);
+      }
+    };
+
+    fetchData();
+  }, [docenteLogeado]);
+
+
 
   return (
     <>
+
+      <div className="mt-6 d-flex flex-column align-items-center bg-primary ">
+        <h3 className="mt-6">Docentes disponibles</h3>
+      </div>
+
       <div className="container">
-          <ul id="card-doc" className="row">
-            {docentes.map((docente) => (
-              <DocenteCard key={docente.identidad} docente={docente} />
-            ))}
-          </ul>
-        </div>
+        <ul id="card-doc" className="row">
+          {docentesSeleccionado?.map((docente) => (
+            <DocenteCard key={docente.num_empleado} docente={docente} />
+          ))}
+        </ul>
+      </div>
     </>
   );
 };
