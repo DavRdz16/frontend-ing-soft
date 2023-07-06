@@ -111,6 +111,7 @@ const ListaDeCarreras = ({ centro, opcion }) => {
                 className="form-chek"
                 name="flexRadioDefault"
                 id="flexRadioDefault1"
+                onClick={() => opcionDeCarrera(carrera.nombre)}
               />
               <label
                 className="ms-2"

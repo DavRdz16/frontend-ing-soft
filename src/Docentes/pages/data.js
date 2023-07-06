@@ -4,7 +4,7 @@ export const empleados = [
     nombres: 'Juan',
     apellidos: 'Pérez',
     identidad: '123456789',
-    correo: 'angeldavid1498@gmail.com',
+    correo: 'fgarcia0300@gmail.com',
     password: 'password1',
     foto: 'https://example.com/foto1.jpg',
     centro: 'Centro Educativo A',

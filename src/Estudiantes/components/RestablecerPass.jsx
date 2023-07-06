@@ -94,6 +94,7 @@ export const RestablecerPass = () => {
                 Restablecer contraseña
               </button>
             </form>
+            </div>
             {message && (
               <div role="alert">
                 {(() => {
@@ -110,6 +111,7 @@ export const RestablecerPass = () => {
                     case "El enlace ha expirado. Por favor, solicita un nuevo enlace de recuperación de contraseña.":
                       return (
                         <>
+                        <div className="d-flex flex-column flex-wrap align-items-center">
                           <div
                             className="alert alert-warning p-1 mt-2"
                             role="alert"
@@ -117,8 +119,10 @@ export const RestablecerPass = () => {
                             {message}
                           </div>
                           <Link to="/recuperacion/estudiante">
-                            <button>Solicitar enlace</button>
+                            <button className="btn btn-success form-control mt-3" >Solicitar enlace</button>
                           </Link>
+                        </div>
+                          
                         </>
                       );
                     case "Error al restablecer la contraseña.":
@@ -140,7 +144,7 @@ export const RestablecerPass = () => {
                             {message}
                           </div>
                           <Link to="/log/estudiante">
-                            <button>Iniciar Sesión</button>
+                            <button className="btn btn-success form-control mt-3">Iniciar Sesión</button>
                           </Link>
                         </>
                       );
@@ -149,7 +153,7 @@ export const RestablecerPass = () => {
               </div>
             )}
           </div>
-        </div>
+
       </div>
     </>
   );

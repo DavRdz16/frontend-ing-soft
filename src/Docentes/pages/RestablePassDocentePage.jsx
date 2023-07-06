@@ -97,6 +97,7 @@ export const RestablePassDocentePage = () => {
                 Restablecer contraseña
               </button>
             </form>
+            </div>
             {message && (
               <div role="alert">
                 {(() => {
@@ -152,7 +153,7 @@ export const RestablePassDocentePage = () => {
               </div>
             )}
           </div>
-        </div>
+
       </div>
     </>
   );

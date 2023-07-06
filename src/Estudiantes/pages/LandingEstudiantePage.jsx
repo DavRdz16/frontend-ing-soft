@@ -2,7 +2,6 @@ import "../../Assets/styles/styles-landing/Landin-styles.css";
 import { useNavigate } from "react-router-dom";
 
 export const LandingEstudiantePage = () => {
-
   const navigate = useNavigate();
   const onNavPerfilEstudiante = () => {
     navigate("../PerfilEstudiante");
@@ -10,9 +9,17 @@ export const LandingEstudiantePage = () => {
 
   return (
     <>
-      <button style={{ marginTop: '200px' }} className="btn btn-primary"
-        onClick={onNavPerfilEstudiante}
-      >Perfil</button>
+      <div className="d-flex justify-content-center align-items-center flex-column">
+        <br />
+        <br />
+        <br />
+        <br />
+        <h3>Bienvenido Estudiante</h3>
+        <br />
+        <button className="btn btn-primary" onClick={onNavPerfilEstudiante}>
+          Perfil
+        </button>
+      </div>
     </>
   );
 };

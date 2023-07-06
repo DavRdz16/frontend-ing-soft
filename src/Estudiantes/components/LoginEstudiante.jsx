@@ -25,8 +25,8 @@ export const LoginEstudiante = () => {
         const { login, usuario, token } = res.data;
         if (login) {
           localStorage.setItem("token", token);
-          localStorage.setItem("login", login);          
-          localStorage.setItem("id", usuario[0].num_cuenta);          
+          localStorage.setItem("login", login);
+          localStorage.setItem("id", usuario[0].num_cuenta);
           console.log({ login, usuario, token });
           alert("Inicio sesion exitoso");
           navigate("/estudiante/home");
@@ -44,8 +44,11 @@ export const LoginEstudiante = () => {
 
   return (
     <>
-      <div className="d-flex vh-100 justify-content-center align-items-center bg-primary ">
+      <div className="d-flex justify-content-center align-items-center bg-primary ">
         <div className="form">
+          <br />
+          <br />
+          <br />
           <br />
           <h2>Inicio Sesión de Estudiante</h2>
           <br />
@@ -56,7 +59,7 @@ export const LoginEstudiante = () => {
               </label>
               <input
                 type="email"
-                placeholder="ejemplo@gmail.com"
+                placeholder="ejemplo@unah.hn"
                 className="rounded-3 form-control"
                 name="email"
                 onChange={handleInput}
@@ -80,7 +83,12 @@ export const LoginEstudiante = () => {
                 <span className="text-danger">{error.password}</span>
               )} */}
             </div>
-            <Link className="d-flex justify-content-end" to='/recuperacion/estudiante'>Olvidaste tu contraseña?</Link>
+            <Link
+              className="d-flex justify-content-end mb-3"
+              to="/recuperacion/estudiante"
+            >
+              Olvidaste tu contraseña?
+            </Link>
             <p>
               Recuerda que como estudiante <br /> tu correo termina en @unah.hn
             </p>
@@ -92,9 +100,11 @@ export const LoginEstudiante = () => {
             <p>
               Al hacer click estas aceptando nuestros términos y condiciones
             </p>
-
           </form>
         </div>
+      </div>
+      <div className="footer z-n1 position-absolute bottom-0 start-50 translate-middle-x">
+        <img src="../src/Assets/img/footer-bg.png" alt="" />
       </div>
     </>
   );

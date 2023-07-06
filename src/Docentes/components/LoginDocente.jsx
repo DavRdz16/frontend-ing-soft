@@ -5,7 +5,6 @@ import { validacionRegisto } from "../../Administardor/helpers/ValidacionRegistr
 import "../../Assets/styles/styles-forms/Forms-styles.css";
 import "../../Assets/styles/styles-docentes/Docente-home.css";
 
-
 export const LoginDocente = () => {
   const navigate = useNavigate();
 
@@ -46,8 +45,11 @@ export const LoginDocente = () => {
 
   return (
     <>
-      <div className="d-flex vh-100 justify-content-center align-items-center bg-primary ">
+      <div className="d-flex justify-content-center align-items-center bg-primary ">
         <div className="form">
+          <br />
+          <br />
+          <br />
           <br />
           <h2>Inicio Sesión del Docente</h2>
           <br />
@@ -58,7 +60,7 @@ export const LoginDocente = () => {
               </label>
               <input
                 type="email"
-                placeholder="ejemplo@gmail.com"
+                placeholder="ejemplo@unah.edu.hn"
                 className="rounded-3 form-control"
                 name="email"
                 onChange={handleInput}
@@ -96,6 +98,9 @@ export const LoginDocente = () => {
             </p>
           </form>
         </div>
+      </div>
+      <div className="footer z-n1 position-absolute bottom-0 start-50 translate-middle-x">
+        <img src="../src/Assets/img/footer-bg.png" alt="" />
       </div>
     </>
   );

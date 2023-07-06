@@ -81,50 +81,53 @@ export const RegistroDocete = () => {
   return (
     <>
       <div className="">
-        <div className="d-flex vh-100 justify-content-center align-items-center bg-primary bd-layout">
+        <div className="d-flex justify-content-center align-items-center bg-primary bd-layout">
           <div className="form">
             <br />
             <h2>Registro de Docentes</h2>
             <br />
             <form onSubmit={handleSubmit}>
-              <div className="d-flex flex-wrap">
-                <div className="mb-3 pe-4">
-                  <label htmlFor="nombres">
-                    <strong>Nombres</strong>
-                  </label>
-                  <input
-                    type="text"
-                    placeholder="Ej. Juan José"
-                    className="rounded-3 form-control"
-                    value={formState.nombres}
-                    name="nombres"
-                    onChange={handleChange}
-                  />
-                  {errors.nombres && (
-                    <div className="alert alert-danger p-1" role="alert">
-                      {errors.nombres}
-                    </div>
-                  )}
-                </div>
-                <div className="mb-3">
-                  <label htmlFor="apellidos">
-                    <strong>Apellidos</strong>
-                  </label>
-                  <input
-                    type="text"
-                    placeholder="Ej. Perez Gonzalez"
-                    className="rounded-3 form-control"
-                    value={formState.apellidos}
-                    name="apellidos"
-                    onChange={handleChange}
-                  />
-                  {errors.apellidos && (
-                    <div className="alert alert-danger p-1" role="alert">
-                      {errors.apellidos}
-                    </div>
-                  )}
+              <div className="container">
+                <div className="row mb-3">
+                  <div className="col ps-0 pe-1">
+                    <label htmlFor="nombres">
+                      <strong>Nombres</strong>
+                    </label>
+                    <input
+                      type="text"
+                      placeholder="Ej. Juan José"
+                      className="rounded-3 form-control"
+                      value={formState.nombres}
+                      name="nombres"
+                      onChange={handleChange}
+                    />
+                    {errors.nombres && (
+                      <div className="alert alert-danger p-1" role="alert">
+                        {errors.nombres}
+                      </div>
+                    )}
+                  </div>
+                  <div className="col ps-1 pe-0">
+                    <label htmlFor="apellidos">
+                      <strong>Apellidos</strong>
+                    </label>
+                    <input
+                      type="text"
+                      placeholder="Ej. Perez Gonzalez"
+                      className="rounded-3 form-control"
+                      value={formState.apellidos}
+                      name="apellidos"
+                      onChange={handleChange}
+                    />
+                    {errors.apellidos && (
+                      <div className="alert alert-danger p-1" role="alert">
+                        {errors.apellidos}
+                      </div>
+                    )}
+                  </div>
                 </div>
               </div>
+
               <div className="mb-3">
                 <label htmlFor="identidad">
                   <strong>Número de Identidad</strong>
@@ -206,7 +209,7 @@ export const RegistroDocete = () => {
                   type="file"
                   id="formFileMultiple"
                   disabled
-                  placeholder="Ingrese una foto"
+                  placeholder="Suba una foto"
                   className="rounded-3 form-control"
                   value={formState.foto}
                   name="foto"
@@ -214,7 +217,7 @@ export const RegistroDocete = () => {
                 />
               </div>
               <div>
-              <label htmlFor="foto">
+                <label htmlFor="foto">
                   <strong>Asignar Centro</strong>
                 </label>
                 <select

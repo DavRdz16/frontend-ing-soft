@@ -4,7 +4,7 @@ export const SobrePage = () => {
   return (
     <>
       <div className="mt-6 d-flex flex-column align-items-center justify-content-center">
-        <h3>Sobre Nosotros</h3>
+        <h3 className="mt-5">Sobre Nosotros</h3>
         <ul
           id="cargar"
           className="z-0 position-absolute top-50 start-50 translate-middle"

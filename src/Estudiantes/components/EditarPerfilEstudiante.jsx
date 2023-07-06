@@ -128,66 +128,86 @@ export const EditarPerfilEstudiante = () => {
     setImgLimit(imgLimit.filter((imagen) => imagen.id !== id));
   };
   return (
-    <div className="d-flex flex-column justify-content-center align-items-center ">
-      <h3>Editar Perfil</h3>
-      <br />
-      {/*Actualización de la descripcion*/}
-      <div className=" d-flex flex-column justify-content-center align-items-center w-100 h-100">
-        {actualizando && (
-          <div>
-            <span style={{ marginLeft: "10px" }}>Actualizando</span>
-          </div>
-        )}
-        <textarea
-          className="w-75 h-75 rounded-3"
-          placeholder="Escribe aquí tu nueva descripción"
-          value={textDescripcion}
-          onChange={editarDescripcion}
-        ></textarea>
+    <>
+      <div className="d-flex flex-column justify-content-center align-items-center ">
+        <h3>Editar Perfil</h3>
         <br />
-      </div>
-      <button
-        className="btn btn-w btn-h btn-primary rounded-3 mt-3"
-        onClick={actualizarDescripcion}
-      >
-        Actualizar descripción
-      </button>
-      <hr />
-      {/*borar imagenes*/}
-      {imgLimit &&
-        imgLimit.length > 0 &&
-        imgLimit.map((datoImg) => (
-          <div style={{ width: "200px", height: "200px" }} key={datoImg.id}>
-            <img
-              style={{ width: "150px", height: "150px" }}
-              src={datoImg.url}
-              alt="Imagen"
-            />
-            <button onClick={() => handleEliminarImagen(datoImg.id)}>
-              Borrar
-            </button>
-          </div>
-        ))}
-
-      <div className="d-flex flex-column justify-content-center align-items-center">
-        <input
-        placeholder="Ingrese una foto"
-        className="rounded-3 form-control" 
-          disabled={desabilitarBoton}
-          type="file"
-          accept="image/*"
-          onChange={cargarImagen}
-        />
-
+        {/*Actualización de la descripcion*/}
+        <div className=" d-flex flex-column justify-content-center align-items-center w-100 h-100">
+          {actualizando && (
+            <div>
+              <span style={{ marginLeft: "10px" }}>Actualizando</span>
+            </div>
+          )}
+          <textarea
+            className="w-75 h-75 rounded-3"
+            placeholder="Escribe aquí tu nueva descripción"
+            value={textDescripcion}
+            onChange={editarDescripcion}
+          ></textarea>
+          <br />
+        </div>
         <button
-        className="btn btn-w btn-h btn-primary rounded-3 mt-3"
-          type="submit"
-          onClick={() => subirImagen()}
-          disabled={desabilitarBoton}
+          className="btn btn-w btn-h btn-primary rounded-3 mt-3"
+          onClick={actualizarDescripcion}
         >
-          Subir imagen
+          Actualizar descripción
         </button>
+        <hr />
+        <div className="container">
+          <div className="row">
+            <div className="d-flex flex-row flex-wrap align-items-center align-content-center  ">
+              {/*borar imagenes*/}
+              {imgLimit &&
+                imgLimit.length > 0 &&
+                imgLimit.map((datoImg) => (
+                  <>
+                    <div
+                      className="d-flex flex-row flex-wrap align-items-center col-4 px-3 justify-content-center"
+                      key={datoImg.id}
+                    >
+                      <div className="w-100 h-100">
+                        <img
+                          className="img-fluid img-thumbnail"
+                          src={datoImg.url}
+                          alt="Imagen"
+                        />
+                      </div>
+
+                      <div className=" ">
+                        <button
+                          onClick={() => handleEliminarImagen(datoImg.id)}
+                          className=" btn btn-primary rounded-3 mt-3 mb-5"
+                        >
+                          Borrar
+                        </button>
+                      </div>
+                    </div>
+                  </>
+                ))}
+            </div>
+          </div>
+        </div>
+        <div className="d-flex flex-column justify-content-center align-items-center">
+          <input
+            placeholder="Ingrese una foto"
+            className="rounded-3 form-control"
+            disabled={desabilitarBoton}
+            type="file"
+            accept="image/*"
+            onChange={cargarImagen}
+          />
+
+          <button
+            className="btn btn-w btn-h btn-primary rounded-3 mt-3 mb-5"
+            type="submit"
+            onClick={() => subirImagen()}
+            disabled={desabilitarBoton}
+          >
+            Subir imagen
+          </button>
+        </div>
       </div>
-    </div>
+    </>
   );
 };

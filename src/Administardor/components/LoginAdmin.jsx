@@ -42,8 +42,11 @@ export const LoginAdmin = () => {
 
   return (
     <>
-      <div className="d-flex vh-100 justify-content-center align-items-center bg-primary ">
+      <div className="d-flex justify-content-center align-items-center bg-primary ">
         <div className="form">
+          <br />
+          <br />
+          <br />
           <br />
           <h2>Inicio de Sesión de Administrador</h2>
           <br />
@@ -54,7 +57,7 @@ export const LoginAdmin = () => {
               </label>
               <input
                 type="email"
-                placeholder="ejemplo@gmail.com"
+                placeholder="ejemplo@unah.edu.hn"
                 className="rounded-3 form-control"
                 name="email"
                 onChange={handleInput}
@@ -93,7 +96,9 @@ export const LoginAdmin = () => {
           </form>
         </div>
       </div>
-      <hr />
+      <div className="footer z-n1 position-absolute bottom-0 start-50 translate-middle-x">
+        <img src="../src/Assets/img/footer-bg.png" alt="" />
+      </div>
     </>
   );
 };
