@@ -1,4 +1,4 @@
-import React from 'react'
+
 import { LandingAdministradorPage } from '../pages/LandingAdministradorPage'
 import { Route, Routes } from 'react-router-dom'
 import { NavbarEspecifico } from '../../IU/components/NavbarEspecifico'
