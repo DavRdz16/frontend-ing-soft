@@ -1,4 +1,4 @@
-import React from "react";
+
 import { useNavigate } from "react-router-dom";
 import "../../Assets/styles/styles-admin/Admin-home.css";
 
@@ -47,6 +47,9 @@ export const LandingAdministradorPage = () => {
           </div>
 
         </div>
+      </div>
+      <div className="footer z-n1 position-absolute bottom-0 start-50 translate-middle-x">
+        <img src="../src/Assets/img/footer-bg.png" alt="" />
       </div>
     </>
   );

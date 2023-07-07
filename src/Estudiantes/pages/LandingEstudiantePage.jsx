@@ -20,6 +20,9 @@ export const LandingEstudiantePage = () => {
           Perfil
         </button>
       </div>
+      <div className="footer z-n1 position-absolute bottom-0 start-50 translate-middle-x">
+        <img src="../src/Assets/img/footer-bg.png" alt="" />
+      </div>
     </>
   );
 };
