@@ -7,7 +7,7 @@ export const CargaEstudiantes = () => {
   const [msg, setMsg] = useState({});
   const [file, setFile] = useState();
   const [json, setJson] = useState([{}]);
-  
+  const [uploaded, setUploaded] = useState(false);
 
   const handleFileUpload = (event) => {
     const file = event.target.files[0];
@@ -24,6 +24,7 @@ export const CargaEstudiantes = () => {
   };
 
   const handleSubmit = () => {
+    setUploaded(true);
     fetch("http://localhost:8081/registro/estudiante", {
       method: "POST",
       headers: {
@@ -31,7 +32,9 @@ export const CargaEstudiantes = () => {
       },
       body: JSON.stringify(json),
     })
-      .then((response) => response.json())
+      .then((response) => {
+        response.json();
+      })
       .then((data) => {
         // Procesar la respuesta del backend si es necesario
         setMsg(data);
@@ -44,7 +47,10 @@ export const CargaEstudiantes = () => {
 
   return (
     <>
-      <div className="d-flex vh-100 flex-column justify-content-center align-items-center bg-primary ">
+      <div className="d-flex flex-column justify-content-center align-items-center bg-primary ">
+        <br />
+        <br />
+        <br />
         <br />
         <h2>Carga de Estudiantes</h2>
         <br />
@@ -57,9 +63,14 @@ export const CargaEstudiantes = () => {
             id="formFile"
             onChange={handleFileUpload}
           />
-          <button className="btn btn-w btn-success mt-3" onClick={handleSubmit}>
+          <button
+            className="btn btn-w btn-success mt-3"
+            onClick={handleSubmit}
+            disabled={uploaded}
+          >
             Subir Estudiantes
           </button>
+          <br />
           <p>{msg?.message}</p>
         </div>
       </div>
