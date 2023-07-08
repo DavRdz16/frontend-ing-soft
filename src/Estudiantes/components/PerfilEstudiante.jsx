@@ -59,7 +59,7 @@ export const PerfilEstudiante = () => {
                 className={` carousel-item ${index === 0 ? "active" : ""}`}
               >
                 <div className="">
-                  <img src={img.url} className="img-fluid  img-thumbnail" alt="..." />
+                  <img src={img.url} className="img-size2 img-thumbnail" alt="..." />
                 </div>
               </div>
             ))}
