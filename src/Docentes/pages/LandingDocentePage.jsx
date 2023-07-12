@@ -4,8 +4,20 @@ import { Link } from "react-router-dom";
 export const LandingDocentePage = () => {
   return (
     <>
-    <Link to = '../perfil'><button>Perfil</button></Link>
-  
+      <div className="d-flex justify-content-center align-items-center flex-column">
+        <br />
+        <br />
+        <br />
+        <br />
+        <h3>Bienvenido Docente</h3>
+        <br />
+        <Link to="../perfil">
+          <button className="btn btn-primary">Perfil</button>
+        </Link>
+      </div>
+      <div className="footer z-n1 position-absolute bottom-0 start-50 translate-middle-x">
+        <img src="../src/Assets/img/footer-bg.png" alt="" />
+      </div>
       <LandingDocente />
     </>
   );

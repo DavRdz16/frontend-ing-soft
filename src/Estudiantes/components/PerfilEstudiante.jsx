@@ -43,84 +43,92 @@ export const PerfilEstudiante = () => {
   }, []);
 
   return (
-  <>
-    
-    <div className="container">
-      <h3 className="mt-5">Información General</h3>
-      <br />
-      {/* Contenedor */}
-      <div className=" row">
-        {/* Carrusel */}
-        <div id="carouselExample" className="carousel img-size d-flex align-items-center slide col-4">
-          <div className="carousel-inner">
-            {imagen.map((img, index) => (
-              <div
-                key={img.id}
-                className={` carousel-item ${index === 0 ? "active" : ""}`}
-              >
-                <div className="">
-                  <img src={img.url} className="img-size2 img-thumbnail" alt="..." />
+    <>
+      <div className="container">
+        <h3 className="mt-5">Información General</h3>
+        <br />
+        {/* Contenedor */}
+        <div className=" row">
+          {/* Carrusel */}
+          <div
+            id="carouselExample"
+            className="carousel img-size d-flex align-items-center slide col-4"
+          >
+            <div className="carousel-inner">
+              {imagen.map((img, index) => (
+                <div
+                  key={img.id}
+                  className={` carousel-item ${index === 0 ? "active" : ""}`}
+                >
+                  <div className="">
+                    <img
+                      src={img.url}
+                      className="img-size2 img-thumbnail"
+                      alt="..."
+                    />
+                  </div>
                 </div>
-              </div>
-            ))}
-            <button
-              className="carousel-control-prev"
-              type="button"
-              data-bs-target="#carouselExample"
-              data-bs-slide="prev"
-            >
-              <span
-                className="carousel-control-prev-icon"
-                aria-hidden="true"
-              ></span>
-              <span className="visually-hidden">Anterior</span>
-            </button>
-            <button
-              className="carousel-control-next"
-              type="button"
-              data-bs-target="#carouselExample"
-              data-bs-slide="next"
-            >
-              <span
-                className="carousel-control-next-icon"
-                aria-hidden="true"
-              ></span>
-              <span className="visually-hidden">Próxima</span>
-            </button>
+              ))}
+              <button
+                className="carousel-control-prev"
+                type="button"
+                data-bs-target="#carouselExample"
+                data-bs-slide="prev"
+              >
+                <span
+                  className="carousel-control-prev-icon"
+                  aria-hidden="true"
+                ></span>
+                <span className="visually-hidden">Anterior</span>
+              </button>
+              <button
+                className="carousel-control-next"
+                type="button"
+                data-bs-target="#carouselExample"
+                data-bs-slide="next"
+              >
+                <span
+                  className="carousel-control-next-icon"
+                  aria-hidden="true"
+                ></span>
+                <span className="visually-hidden">Próxima</span>
+              </button>
+            </div>
+          </div>
+
+          {/* Datos generales */}
+          <div className="card1 p-5 col-8 d-flex flex-column align-items-start justify-content-center">
+            <p>
+              Nombre: {imgPerfilEstudiante.primer_nombre}{" "}
+              {imgPerfilEstudiante.segundo_nombre}{" "}
+              {imgPerfilEstudiante.primer_apellido}{" "}
+              {imgPerfilEstudiante.segundo_apellido}{" "}
+            </p>
+            <p>Carrera: {imgPerfilEstudiante.carrera}</p>
+            <p>Número de cuenta: {imgPerfilEstudiante.num_cuenta}</p>
+            <p>Índice Global: {imgPerfilEstudiante.indice}</p>
+            <p>
+              Correo Institucional: {imgPerfilEstudiante.correo_institucional}
+            </p>
+          </div>
+        </div>
+        {/* Descripción del estudiante */}
+        <div className="card2 border-3">
+          <h3 className="mt-3">Descripción</h3>
+          <br />
+          <div className="card3 border-3">
+            {imgPerfilEstudiante.descripcion}
           </div>
         </div>
 
-        {/* Datos generales */}
-        <div className="card1 p-5 col-8 d-flex flex-column align-items-start justify-content-center">
-          <p>
-            Nombre: {imgPerfilEstudiante.primer_nombre}{" "}
-            {imgPerfilEstudiante.segundo_nombre}{" "}
-            {imgPerfilEstudiante.primer_apellido}{" "}
-            {imgPerfilEstudiante.segundo_apellido}{" "}
-          </p>
-          <p>Carrera: {imgPerfilEstudiante.carrera}</p>
-          <p>Número de cuenta: {imgPerfilEstudiante.num_cuenta}</p>
-          <p>Índice Global: {imgPerfilEstudiante.indice}</p>
-          <p>
-            Correo Institucional: {imgPerfilEstudiante.correo_institucional}
-          </p>
+        <div className="mt-5 d-flex flex-colum justify-content-center">
+          <Link to="../EditarPerfilEstudiante">
+            <button className="btn btn-w btn-h btn-primary mt-1 mb-5 ">
+              Editar Perfil
+            </button>
+          </Link>
         </div>
       </div>
-      {/* Descripción del estudiante */}
-      <div className="card2 border-3">
-        <h3 className="mt-3">Descripción</h3>
-        <br />
-        <div className="card3 border-3">{imgPerfilEstudiante.descripcion}</div>
-      </div>
-
-      <div className="mt-5 d-flex flex-colum justify-content-center">
-        <Link to="../EditarPerfilEstudiante">
-          <button className="btn btn-w btn-h btn-primary mt-1 mb-5 ">
-            Editar Perfil
-          </button>
-        </Link>
-      </div>
-    </div>
-  </>
+    </>
   );
 };
