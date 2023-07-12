@@ -4,13 +4,24 @@ import "../../Assets/styles/styles-admin/Admin-asignar-rol.css";
 export const RolDocente = () => {
   const [centroSeleccionado, setCentroSeleccionado] = useState(0);
   const [opcionDeCarrera, setOpcionDeCarrera] = useState(null);
+  const [mostrarListaDeCarreras, setMostrarListaDeCarreras] = useState(false)
 
   const handleCentro = (event) => {
     setCentroSeleccionado(event.target.value);
+    mostrar(event.target.value);
   };
 
   const opcionCarrera = (nombreCarrera) => {
     setOpcionDeCarrera(nombreCarrera);
+  };
+
+
+  const mostrar = (centroSeleccionado) => {
+    if (centroSeleccionado !== "x") {
+      setMostrarListaDeCarreras(true);
+    } else {
+      setMostrarListaDeCarreras(false);
+    }
   };
 
   return (
@@ -40,23 +51,38 @@ export const RolDocente = () => {
             </select>
             <br />
           </div>
-
-          <div className="d-flex flex-column justify-content-center align-items-center mb-6">
-            <ListaDeCarreras
-              centro={centroSeleccionado}
-              opcion={opcionCarrera}
-            />
-            <br />
-          </div>
         </div>
-        <div className="d-flex justify-content-center ">
+        {mostrarListaDeCarreras && (
+
+          <div className="d-flex flex-column justify-content-center">
+            <div className="form">
+              <h3>Carrera:</h3>
+              <ListaDeCarreras
+                centro={centroSeleccionado}
+                opcion={opcionCarrera}
+              />
+              <br />
+            </div>
+
+            <div className="d-flex justify-content-center ">
+              <div className=" w-75">
+                <ListaDocentes
+                  carrera={opcionDeCarrera}
+                  centro={centroSeleccionado}
+                />
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* <div className="d-flex justify-content-center ">
           <div className=" w-75">
             <ListaDocentes
               carrera={opcionDeCarrera}
               centro={centroSeleccionado}
             />
           </div>
-        </div>
+        </div> */}
       </div>
     </>
   );
@@ -90,10 +116,14 @@ const ListaDeCarreras = ({ centro, opcion }) => {
     setCargaDeCarreras(true);
   }, [centro]);
 
+  {/*Funcion para cargar la carrera*/ }
   const opcionDeCarrera = (NombreDeCarrera) => {
     opcion(NombreDeCarrera);
   };
-
+  {/**Toma el valor de la carrera seleccinada */ }
+  const handleCarrera = (event) => {
+    opcionDeCarrera(event.target.value);
+  };
   return (
     <>
       {cargaDeCarreras ? (
@@ -103,36 +133,32 @@ const ListaDeCarreras = ({ centro, opcion }) => {
           <br />
         </>
       ) : (
-        carreras.map((carrera, index) => (
-          <>
-            <div className="form-check">
-              <input
-                type="radio"
-                className="form-chek"
-                name="flexRadioDefault"
-                id="flexRadioDefault1"
-                onClick={() => opcionDeCarrera(carrera.nombre)}
-              />
-              <label
-                className="ms-2"
+        <select id='lang' className="form-control2 w-75"
+          onChange={handleCarrera}
+        >
+          {
+            carreras.map((carrera, index) => (
+
+              <option
                 key={index}
-                onClick={() => opcionDeCarrera(carrera.nombre)}
-              >
-                {carrera.nombre}
-              </label>
-            </div>
-            <br />
-          </>
-        ))
+                value={carrera.nombre}>
+                {carrera.nombre}</option>
+
+            ))
+          }
+        </select>
+
       )}
     </>
   );
 };
 
 const ListaDocentes = ({ carrera, centro }) => {
-  const [docentes, setDocentes] = useState(null);
+  const [docentes, setDocentes] = useState([]);
   const [rolSeleccionado, setRolSeleccionado] = useState({});
-  const [actualizando, setActualizando] = useState(false);
+  const [mostrarAdvertencia, setMostrarAdvertencia] = useState(false);
+  const [realizarActualizacion, setRealizarActualizacion] = useState(true);
+
 
   const handleRol = async (event, numEmpleado) => {
     const { value } = event.target;
@@ -140,35 +166,32 @@ const ListaDocentes = ({ carrera, centro }) => {
       ...prevRoles,
       [numEmpleado]: value,
     }));
+    if (realizarActualizacion == true) {
+      try {
+        const response = await fetch(
+          `http://localhost:8081/docentes/${value}/${numEmpleado}`,
+          {
+            method: "PUT",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              num_empleado: numEmpleado,
+              cargo: value,
+            }),
+          }
+        );
+        if (response.ok) {
 
-    try {
-      setActualizando(true);
-
-      const response = await fetch(
-        `http://localhost:8081/docentes/${value}/${numEmpleado}`,
-        {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            num_empleado: numEmpleado,
-            cargo: value,
-          }),
+        } else {
+          console.log("Error al actualizar");
         }
-      );
-      if (response.ok) {
-      } else {
-        console.log("Error al actualizar");
+      } catch (error) {
+        console.log("Error:", error);
       }
-    } catch (error) {
-      console.log("Error:", error);
-    } finally {
-      setTimeout(() => {
-        setActualizando(false);
-      }, 1000);
     }
-  };
+
+  }
 
   useEffect(() => {
     const fetchDocente = async () => {
@@ -184,11 +207,31 @@ const ListaDocentes = ({ carrera, centro }) => {
     };
     fetchDocente();
   }, [carrera]);
+  const handleAceptar = () => {
+    setMostrarAdvertencia(false);
+  };
+
+  useEffect(() => {
+    const cantidadJefesDepartamento = Object.values(rolSeleccionado).filter(
+      (rol) => rol === "Jefe de departamento"
+    ).length;
+    setMostrarAdvertencia(cantidadJefesDepartamento > 1);
+    setRealizarActualizacion(cantidadJefesDepartamento <= 1);
+  }, [rolSeleccionado]);
+
+  // console.log(realizarActualizacion)
 
   return (
-    <>
+
+    <div className="d-flex flex-column justify-content-center">
       <div className="d-flex flex-column justify-content-center">
-        <div className="d-flex flex-column justify-content-center">
+        {mostrarAdvertencia && (
+          <>
+            <p>Solo puede existir un docente con el cargo de Jefe de departamento</p>
+            <button onClick={handleAceptar}>Aceptar</button>
+          </>)}
+        {!mostrarAdvertencia && (
+
           <table className="table table-striped table-hover">
             <thead>
               <tr>
@@ -205,7 +248,7 @@ const ListaDocentes = ({ carrera, centro }) => {
                 docentes.length > 0 &&
                 docentes.map((dato) => (
                   <tr key={dato.num_empleado}>
-                    <th scope="row">{dato.nombres}</th>
+                    <th scope="row">{dato.nombres}{' '}{dato.apellidos}</th>
                     <td>
                       <div>
                         <select
@@ -236,8 +279,11 @@ const ListaDocentes = ({ carrera, centro }) => {
                 ))}
             </tbody>
           </table>
-        </div>
+        )
+        }
       </div>
-    </>
+    </div>
+
   );
 };
+
