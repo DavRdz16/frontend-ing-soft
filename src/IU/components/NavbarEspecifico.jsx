@@ -33,6 +33,7 @@ export const NavbarEspecifico = () => {
               >
                 <button className="btn btn-primary">Sobre</button>
               </NavLink>
+
             </div>
           </div>
           <div className="navbar-collapse collapse w-100 order-3 dual-collapse2 d-flex justify-content-end">

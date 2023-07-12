@@ -84,6 +84,8 @@ export const EditarPerfilEstudiante = () => {
     /**Datos de pueba para controlar el numero de imagenes */
   }
   const desabilitarBoton = imgLimit.length >= 3;
+
+
   useEffect(() => {
     const image = async () => {
       try {
@@ -189,6 +191,7 @@ export const EditarPerfilEstudiante = () => {
           </div>
         </div>
         <div className="d-flex flex-column justify-content-center align-items-center">
+          
           <input
             placeholder="Ingrese una foto"
             className="rounded-3 form-control"
