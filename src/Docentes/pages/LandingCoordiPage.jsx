@@ -1,6 +1,13 @@
-import "../../Assets/styles/styles-landing/Landin-styles.css";
+import React from "react";
+import { useNavigate } from "react-router-dom";
 
 export const LandingCoordiPage = () => {
+  const navigate = useNavigate();
+
+  const onNavSolicitud = () => {
+    navigate("/docente/ListaSolicitud");
+  };
+
   return (
     <>
       <div className="mt-6 d-flex vh-100 flex-column align-items-center bg-primary ">
@@ -13,8 +20,18 @@ export const LandingCoordiPage = () => {
           <li id="li1"></li>
           <li id="li2"></li>
           <li id="li3"></li>
-        </ul> */}
+        </ul> */
+        <div>
+        <button
+          className="btn btn-primary"
+          onClick={onNavSolicitud}
+        >
+          Lista de Solicitudes
+        </button>
       </div>
+        }
+      </div>
+      
       <div className="footer z-n1 position-absolute bottom-0 start-50 translate-middle-x">
         <img src="../src/Assets/img/footer-bg.png" alt="" />
       </div>
