@@ -5,6 +5,11 @@ export const LandingJefePage = () => {
   const onReinicioClave = () => {
     navigate("/docente/recupeacion");
   };
+
+  const onCrearSeccion = () => {
+    navigate("/docente/crearSeccion");
+  };
+
   return (
     <>
       <div className="mt-6 d-flex flex-column align-items-center bg-primary ">
@@ -16,6 +21,12 @@ export const LandingJefePage = () => {
           onClick={onReinicioClave}
         >
           Reiniciar Clave de Docente
+        </button>
+        <button
+          className="btn btn-w btn-h btn-primary mt-3 form-control"
+          onClick={onCrearSeccion}
+        >
+          Registrar Sección
         </button>
       </div>
       <div className="footer z-n1 position-absolute bottom-0 start-50 translate-middle-x">

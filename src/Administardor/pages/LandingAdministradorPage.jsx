@@ -15,6 +15,10 @@ export const LandingAdministradorPage = () => {
     navigate("/administrador/RolDocente");
   };
 
+  const onNavProcesoMatricula = () => {
+    navigate("/administrador/procesoMatricula");
+  };
+
 
   return (
     <>
@@ -43,6 +47,12 @@ export const LandingAdministradorPage = () => {
             <button className="btn btn-w btn-h btn-primary m-1" onClick={onNavRolDocente}>
               
               Seleccionar rol del docente
+            </button>
+          </div>
+          <div>
+            <button className="btn btn-w btn-h btn-primary m-1" onClick={onNavProcesoMatricula}>
+              
+              Crear proceso de matricula
             </button>
           </div>
 

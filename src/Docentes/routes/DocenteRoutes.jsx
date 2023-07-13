@@ -7,6 +7,7 @@ import { RestablePassDocentePage } from '../pages/RestablePassDocentePage'
 import { DetalleClase } from '../components/DetalleDeClase'
 import { PerfilDocente } from '../components/PerfilDocente'
 import {EditarPerfil} from '../components/EditarPerfil'
+import { CrearSeccionesPage } from '../pages/CrearSeccionesPage'
 
 
 export const DocenteRoutes = () => {
@@ -20,6 +21,8 @@ export const DocenteRoutes = () => {
         <Route path='/detalle-de-clase/:id' element={<DetalleClase />} />
         <Route path='/perfil' element={<PerfilDocente />} />
         <Route path='/editar-perfil' element={<EditarPerfil />} />
+        <Route path='/crearSeccion' element={<CrearSeccionesPage />} />
+
       </Routes>
     </>
   )

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { empleados } from "./data";
+
 import { DocenteCard } from "../components/DocenteCard";
 import "../../Assets/styles/styles-docentes/Docente-lista.css";
 
