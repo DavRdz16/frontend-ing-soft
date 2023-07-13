@@ -58,9 +58,12 @@ export const RestablecerPass = () => {
 
   return (
     <>
-      <div className="d-flex vh-100 justify-content-center align-items-center bg-primary ">
+      <div className="d-flex justify-content-center align-items-center bg-primary ">
         <div className="form">
+          <br />
+          <br />
           <h1>Restablecer contraseña de Estudiante</h1>
+          <br />
           <div className="d-flex flex-wrap">
             <form onSubmit={handleSubmit}>
               <label htmlFor="password">Nueva contraseña:</label>
@@ -94,23 +97,20 @@ export const RestablecerPass = () => {
                 Restablecer contraseña
               </button>
             </form>
-            </div>
-            {message && (
-              <div role="alert">
-                {(() => {
-                  switch (message) {
-                    case "Las contraseñas no coinciden.":
-                      return (
-                        <div
-                          className="alert alert-danger p-1 mt-2"
-                          role="alert"
-                        >
-                          {message}
-                        </div>
-                      );
-                    case "El enlace ha expirado. Por favor, solicita un nuevo enlace de recuperación de contraseña.":
-                      return (
-                        <>
+          </div>
+          {message && (
+            <div role="alert">
+              {(() => {
+                switch (message) {
+                  case "Las contraseñas no coinciden.":
+                    return (
+                      <div className="alert alert-danger p-1 mt-2" role="alert">
+                        {message}
+                      </div>
+                    );
+                  case "El enlace ha expirado. Por favor, solicita un nuevo enlace de recuperación de contraseña.":
+                    return (
+                      <>
                         <div className="d-flex flex-column flex-wrap align-items-center">
                           <div
                             className="alert alert-warning p-1 mt-2"
@@ -119,41 +119,40 @@ export const RestablecerPass = () => {
                             {message}
                           </div>
                           <Link to="/recuperacion/estudiante">
-                            <button className="btn btn-success form-control mt-3" >Solicitar enlace</button>
+                            <button className="btn btn-success form-control mt-3">
+                              Solicitar enlace
+                            </button>
                           </Link>
                         </div>
-                          
-                        </>
-                      );
-                    case "Error al restablecer la contraseña.":
-                      return (
+                      </>
+                    );
+                  case "Error al restablecer la contraseña.":
+                    return (
+                      <div className="alert alert-danger p-1 mt-2" role="alert">
+                        {message}
+                      </div>
+                    );
+                  default:
+                    return (
+                      <>
                         <div
-                          className="alert alert-danger p-1 mt-2"
+                          className="alert alert-success p-1 mt-2"
                           role="alert"
                         >
                           {message}
                         </div>
-                      );
-                    default:
-                      return (
-                        <>
-                          <div
-                            className="alert alert-success p-1 mt-2"
-                            role="alert"
-                          >
-                            {message}
-                          </div>
-                          <Link to="/log/estudiante">
-                            <button className="btn btn-success form-control mt-3">Iniciar Sesión</button>
-                          </Link>
-                        </>
-                      );
-                  }
-                })()}
-              </div>
-            )}
-          </div>
-
+                        <Link to="/log/estudiante">
+                          <button className="btn btn-success form-control mt-3">
+                            Iniciar Sesión
+                          </button>
+                        </Link>
+                      </>
+                    );
+                }
+              })()}
+            </div>
+          )}
+        </div>
       </div>
     </>
   );

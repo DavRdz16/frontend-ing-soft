@@ -1,10 +1,9 @@
 import { useState, useEffect } from "react";
 
-
 export const EditarPerfil = () => {
   const num_empleado = localStorage.getItem("id");
   const [imagen, setImagen] = useState("");
-  const [video,setVideo] = useState('')
+  const [video, setVideo] = useState("");
   const [imgLimit, setImgLimit] = useState([]);
 
   const [videoLimit, setVideoLimit] = useState([]);
@@ -18,7 +17,6 @@ export const EditarPerfil = () => {
         );
         const jsonData = await response.json();
         setImgLimit(jsonData);
-
       } catch (error) {
         console.log("Error:", error);
       }
@@ -93,10 +91,9 @@ export const EditarPerfil = () => {
     fetchVideo();
   }, [videoLimit]);
 
-  const handleEliminarVideo= async (id) => {
+  const handleEliminarVideo = async (id) => {
     await videoDelete(id);
     setVideoLimit(videoLimit.filter((video) => video.id !== id));
-
   };
   const videoDelete = async (id_) => {
     try {
@@ -123,7 +120,7 @@ export const EditarPerfil = () => {
     setVideo(file);
   };
 
-  const subirVideo= async () => {
+  const subirVideo = async () => {
     const formData = new FormData();
     formData.append("video", video[0]);
     formData.append("id_docente", num_empleado);
@@ -143,112 +140,108 @@ export const EditarPerfil = () => {
   };
   return (
     <>
-      <h3>Editar Perfil</h3>
-      <div className="d-flex flex-column justify-content-center align-items-center">
-        <div className="container">
-          <div className="row">
-            <div className="d-flex flex-row flex-wrap align-items-center align-content-center  ">
-              {/*borar imagenes*/}
-
-              <>
+      <div className="d-flex flex-column justify-content-center align-items-center ">
+        <br />
+        <br />
+        <br />
+        <h3>Editar Perfil</h3>
+        <br />
+        <div className="d-flex flex-column justify-content-center align-items-center">
+          <div className="container">
+            <div className="row">
+              <div className="d-flex flex-row flex-wrap align-items-center align-content-center  ">
+                {/*borar imagenes*/}
                 <div className="d-flex flex-row flex-wrap align-items-center col-4 px-3 justify-content-center">
                   <div className="w-100 h-100">
-                    {
-                      imgLimit.length > 0 && ((<img
+                    {imgLimit.length > 0 && (
+                      <img
                         className="img-fluid img-thumbnail"
                         src={imgLimit[0].url}
                         alt="Imagen"
-                      />))}
-
+                      />
+                    )}
                   </div>
                   <div className=" ">
-                    {
-                      imgLimit.length > 0 &&
-                      (
-                        <button
-                          onClick={() => handleEliminarImagen(imgLimit[0].id)}
-                          className=" btn btn-primary rounded-3 mt-3 mb-5"
-                        >
-                          Borrar
-                        </button>
-                      )}
+                    {imgLimit.length > 0 && (
+                      <button
+                        onClick={() => handleEliminarImagen(imgLimit[0].id)}
+                        className=" btn btn-primary rounded-3 mt-3 mb-5"
+                      >
+                        Borrar
+                      </button>
+                    )}
                   </div>
                 </div>
-              </>
-
+              </div>
             </div>
           </div>
-        </div>
+          <input
+            placeholder="Ingrese una foto"
+            className="rounded-3 form-control"
+            disabled={desabilitarBoton}
+            type="file"
+            accept="image/*"
+            onChange={cargarImagen}
+          />
 
-        <input
-          placeholder="Ingrese una foto"
-          className="rounded-3 form-control"
-          disabled={desabilitarBoton}
-          type="file"
-          accept="image/*"
-          onChange={cargarImagen}
-        />
+          <button
+            className="btn btn-w btn-h btn-primary rounded-3 mt-3 mb-5"
+            type="submit"
+            onClick={() => subirImagen()}
+            disabled={desabilitarBoton}
+          >
+            Subir imagen
+          </button>
 
-        <button
-          className="btn btn-w btn-h btn-primary rounded-3 mt-3 mb-5"
-          type="submit"
-          onClick={() => subirImagen()}
-          disabled={desabilitarBoton}
-        >
-          Subir imagen
-        </button>
-      </div>
-
-      <hr />
-{/* Video */}
-      <div className="container">
-          <div className="row">
-            <div className="d-flex flex-row flex-wrap align-items-center align-content-center  ">
-             
-              <>
+          {/* Video */}
+          <div className="container">
+            <div className="row">
+              <div className="d-flex flex-row flex-wrap align-items-center align-content-center  ">
                 <div className="d-flex flex-row flex-wrap align-items-center col-4 px-3 justify-content-center">
                   <div className="w-100 h-100">
-                    {
-                      videoLimit.length > 0 && (<video style={{ width: '300px', height: '250px' }} 
-                      src={videoLimit[0].url} type="video/mp4" controls></video>)}
-
+                    {videoLimit.length > 0 && (
+                      <video
+                        style={{ width: "300px", height: "250px" }}
+                        src={videoLimit[0].url}
+                        type="video/mp4"
+                        controls
+                      ></video>
+                    )}
                   </div>
                   <div className=" ">
-                    {
-                      videoLimit.length > 0 &&
-                      (
-                        <button
-                          onClick={() => handleEliminarVideo(videoLimit[0].id)}
-                          className=" btn btn-primary rounded-3 mt-3 mb-5"
-                        >
-                          Borrar
-                        </button>
-                      )}
+                    {videoLimit.length > 0 && (
+                      <button
+                        onClick={() => handleEliminarVideo(videoLimit[0].id)}
+                        className=" btn btn-primary rounded-3 mt-3 mb-5"
+                      >
+                        Borrar
+                      </button>
+                    )}
                   </div>
                 </div>
-              </>
-
+              </div>
             </div>
           </div>
+
+          <input
+            title="Cargar video"
+            className="rounded-3 form-control"
+            disabled={desabilitarBotonV}
+            type="file"
+            accept="video/*"
+            onChange={cargarVideo}
+          />
+
+          <button
+            className="btn btn-w btn-h btn-primary rounded-3 mt-3 mb-5"
+            type="submit"
+            onClick={() => subirVideo()}
+            disabled={desabilitarBotonV}
+          >
+            Subir video
+          </button>
         </div>
-
-        <input
-         title="Cargar video"
-          className="rounded-3 form-control"
-          disabled={desabilitarBotonV}
-          type="file"
-          accept="video/*"
-          onChange={cargarVideo}
-        />
-
-        <button
-          className="btn btn-w btn-h btn-primary rounded-3 mt-3 mb-5"
-          type="submit"
-          onClick={() => subirVideo()}
-          disabled={desabilitarBotonV}
-        >
-          Subir video 
-        </button>
+      </div>
     </>
-  )
-}
+  );
+};

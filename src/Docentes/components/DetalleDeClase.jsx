@@ -1,9 +1,8 @@
-import { useParams } from 'react-router-dom';
-import { useState, useEffect } from 'react';
-import { fetchClase, fetchAlumnos } from '../Helpers/api';
+import { useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { fetchClase, fetchAlumnos } from "../Helpers/api";
 
 export const DetalleClase = () => {
-
   const { id } = useParams();
   const [alumno, setAlumno] = useState([]);
   // const [nota, setNota] = useEffect(false);
@@ -13,7 +12,6 @@ export const DetalleClase = () => {
   const [editar, setEditar] = useState(false);
   const [numCuenta, setNumCuenta] = useState(null);
 
-
   useEffect(() => {
     const fetchclase = async () => {
       try {
@@ -21,44 +19,48 @@ export const DetalleClase = () => {
         const jsonData = await response.json();
         setAlumno(jsonData);
       } catch (error) {
-        console.log('Error:', error);
+        console.log("Error:", error);
       }
     };
     fetchclase();
   }, []);
 
-  {/*Para los datos de los detalles de la clase utilizar la misma peticion desde el helpers
+  {
+    /*Para los datos de los detalles de la clase utilizar la misma peticion desde el helpers
     Hacer petición para saber si esta activo el registro de notas
     Hacer petición que captura las notas ingresadas en caso de que este activo el registro y usar el enter para enviar los datos a la bd
-   */}
+   */
+  }
 
   const handleEditar = (num_cuenta) => {
-    setNumCuenta(num_cuenta)
+    setNumCuenta(num_cuenta);
     setEditar(true);
   };
   const handleGuardar = async () => {
     setEditar(false);
     // Almacenar datos de la nota
     try {
-      const response = await fetch(`http://localhost:8081/notaEstudiante/nota/${numCuenta}`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ nota: valorInput })
-      });
+      const response = await fetch(
+        `http://localhost:8081/notaEstudiante/nota/${numCuenta}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ nota: valorInput }),
+        }
+      );
       if (response.ok) {
-        console.log('Nota guardada exitosamente');
+        console.log("Nota guardada exitosamente");
       } else {
-        throw new Error('Error al guardar la nota');
+        throw new Error("Error al guardar la nota");
       }
       const resp = await fetch(`http://localhost:8081/clasealumno/${id}`);
       const jsonData = await resp.json();
       setAlumno(jsonData);
     } catch (error) {
-      console.error('Error al realizar la petición:', error);
+      console.error("Error al realizar la petición:", error);
     }
-
   };
   // Obtener datos de la clase, enviando el codigo de la clase
   // useEffect(() => {
@@ -74,11 +76,9 @@ export const DetalleClase = () => {
   // Validar entrada de notas
   const numeroDeEntrada = (event) => {
     const input = event.target.value;
-    if (input == '') {
-      console.log('El input no deve estar vacio')
-    }
-    else {
-     
+    if (input == "") {
+      console.log("El input no deve estar vacio");
+    } else {
       setValorInput(input);
     }
   };
@@ -91,46 +91,53 @@ export const DetalleClase = () => {
         <p>Seccción</p>
       </div> */}
 
+      <div className="d-flex flex-column justify-content-center">
+        <div className="my-3 d-flex flex-column align-items-center">
+          <h3>Lista de Clases Asignadas</h3>
+        </div>
 
-      <table style={{ width: '80%' }}>
-        <thead>
-          <tr>
-            <th>Nombre</th>
-            <th>Apellido</th>
-            <th>Nota</th>
-          </tr>
-        </thead>
-        <tbody>
-          {alumno &&
-            alumno.length > 0 &&
-            alumno.map((dato, index) => (
-              <tr key={index}>
-                <th>{dato.primer_nombre}</th>
-                <th>{dato.primer_apellido}</th>
-                {/* Lista de estudiantes que pertenecen a la clase */}
-                <th> {editar && dato.num_cuenta === numCuenta ? (
-                  <>
-                    <input
-                      type="text"
-                      onChange={numeroDeEntrada}
-                    />
-                    <button onClick={handleGuardar}>Guardar</button>
-                  </>
-                ) : (
-                  <>
-                    <p>{dato.nota}</p>
-                    <button disabled={false} onClick={() => handleEditar(dato.num_cuenta)}>
-                      Editar
-                    </button>
-                  </>
-                )}
-                </th>
+        <div className="d-flex flex-column justify-content-center">
+          <table className="table table-striped table-hover">
+            <thead>
+              <tr>
+                <th scope="col">Nombre</th>
+                <th scope="col">Apellido</th>
+                <th scope="col">Nota</th>
               </tr>
-            ))
-          }
-        </tbody>
-      </table>
+            </thead>
+            <tbody>
+              {alumno &&
+                alumno.length > 0 &&
+                alumno.map((dato, index) => (
+                  <tr key={index}>
+                    <th scope="row">{dato.primer_nombre}</th>
+                    <th scope="row">{dato.primer_apellido}</th>
+                    {/* Lista de estudiantes que pertenecen a la clase */}
+                    <th scope="row">
+                      {" "}
+                      {editar && dato.num_cuenta === numCuenta ? (
+                        <>
+                          <input type="text" onChange={numeroDeEntrada} />
+                          <button onClick={handleGuardar}>Guardar</button>
+                        </>
+                      ) : (
+                        <>
+                          <p>{dato.nota}</p>
+                          <button
+                            disabled={false}
+                            onClick={() => handleEditar(dato.num_cuenta)}
+                          >
+                            Editar
+                          </button>
+                        </>
+                      )}
+                    </th>
+                  </tr>
+                ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
     </>
-  )
-}
-
+  );
+};

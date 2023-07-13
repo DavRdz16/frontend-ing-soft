@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-
+import "../../Assets/styles/styles-docentes/Docente-perfil.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUser } from "@fortawesome/free-solid-svg-icons";
 
 export const PerfilDocente = () => {
-
   const num_empleado = localStorage.getItem("id");
   const [verVideo, setVerVideo] = useState({});
   const [imagen, setImagen] = useState([]);
@@ -26,7 +27,6 @@ export const PerfilDocente = () => {
   }, []);
 
   // Informacion general del docente
-
 
   useEffect(() => {
     const image = async () => {
@@ -70,60 +70,61 @@ export const PerfilDocente = () => {
         <br />
         {/* Contenedor */}
         <div className=" row">
-          <div id="carouselExample" className="carousel img-size d-flex align-items-center slide col-4">
-            {imagen &&
-              imagen.length > 0 ?
-              (
-                <div className="">
-                  <img src={imagen[0].url} className="img-fluid  img-thumbnail" alt="..." />
-                </div>
-              ):(
-                <p>Actualiza tu imagen de perfil</p>
-              )}
+          <div
+            id="carouselExample"
+            className="img-size d-flex align-items-center col-4"
+          >
+            {imagen && imagen.length > 0 ? (
+              <div className="">
+                <img
+                  src={imagen[0].url}
+                  className="img-size2  img-thumbnail"
+                  alt="..."
+                />
+              </div>
+            ) : (
+              <FontAwesomeIcon
+                className="img-size2 img-thumbnail"
+                style={{ color: "#006494" }}
+                icon={faUser}
+              />
+            )}
           </div>
-
           {/* Datos generales */}
-
-          {
-          info.length > 0 &&
-          (
+          {info.length > 0 && (
             <div className="card1 p-5 col-8 d-flex flex-column align-items-start justify-content-center">
-            <p>Nombre: {info[0].nombres}</p>
-            <p> Apellido: {info[0].apellidos}</p>
-            <p>Correo Institucional {info[0].correo}</p>
-            <p> Identidad: {info[0].identidad}</p>
-            <p> Cargo: {info[0].cargo}</p>
-            <p> Carrera: {info[0].carrera}</p>
-          </div>
-          )
-        }
-          
+              <p>Nombre: {info[0].nombres}</p>
+              <p> Apellido: {info[0].apellidos}</p>
+              <p>Correo Institucional {info[0].correo}</p>
+              <p> Identidad: {info[0].identidad}</p>
+              <p> Cargo: {info[0].cargo}</p>
+              <p> Carrera: {info[0].carrera}</p>
+            </div>
+          )}
+        </div>
+        {/* Descripción del docente */}
+        <div className="card2 border-3">
+          <h3 className="mt-3"> Video de presentación</h3>
+          <br />
+          {verVideo.length > 0 ? (
+            <video
+              className="vid"
+              src={verVideo[0].url}
+              type="video/mp4"
+              controls
+            ></video>
+          ) : (
+            <p>Sube un video precentandote a tus alumnos</p>
+          )}
+        </div>
+        <div className="mt-5 d-flex flex-colum justify-content-center">
+          <Link to="../editar-perfil">
+            <button className="btn btn-w btn-h btn-primary mt-1 mb-5 ">
+              Editar Perfil
+            </button>
+          </Link>
         </div>
       </div>
-      {/* Descripción del docente */}
-      <div className="card2 border-3">
-        <h3 className="mt-3"> Video de presentación</h3>
-        <br />
-
-        {
-          verVideo.length > 0 ?
-          (
-            <video style={{ width: '300px', height: '250px' }} src={verVideo[0].url} type="video/mp4" controls></video>
-          ):
-          (
-            <p>Sube un video precentandote a tus alumnos</p>
-          )
-          }
-      </div>
-
-      <div className="mt-5 d-flex flex-colum justify-content-center">
-        <Link to='../editar-perfil'>
-          <button className="btn btn-w btn-h btn-primary mt-1 mb-5 ">
-            Editar Perfil
-          </button>
-        </Link>
-      </div>
-
     </>
   );
-}
+};
