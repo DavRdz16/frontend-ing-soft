@@ -4,11 +4,7 @@ import { Route, Routes } from 'react-router-dom'
 import { LandingPreviusPage } from '../pages/LandingPreviusPage'
 import { RecuperacionDocentePage } from '../pages/RecuperacionDocentePage'
 import { RestablePassDocentePage } from '../pages/RestablePassDocentePage'
-import { DetalleClase } from '../components/DetalleDeClase'
-import { PerfilDocente } from '../components/PerfilDocente'
-import {EditarPerfil} from '../components/EditarPerfil'
-
-
+import { SolicitudListaCoord } from '../pages/SolicitudListaCoord'
 export const DocenteRoutes = () => {
   return (
     <>
@@ -17,9 +13,7 @@ export const DocenteRoutes = () => {
         <Route path='/home' element={<LandingPreviusPage/>} />
         <Route path='/recupeacion' element={<RecuperacionDocentePage/>} />
         <Route path='/reset-password/:token' element={<RestablePassDocentePage />} />
-        <Route path='/detalle-de-clase/:id' element={<DetalleClase />} />
-        <Route path='/perfil' element={<PerfilDocente />} />
-        <Route path='/editar-perfil' element={<EditarPerfil />} />
+        <Route path='/ListaSolicitud' element={<SolicitudListaCoord/>} />
       </Routes>
     </>
   )

@@ -7,10 +7,18 @@ export const LandingJefePage = () => {
   };
   return (
     <>
-      <div className="mt-6 d-flex flex-column align-items-center bg-primary ">
+      <div className="mt-6 d-flex vh-100 flex-column align-items-center bg-primary ">
+        <br />
+        <br />
         <br />
         <br />
         <h3 className="mt-6">Bienvenido Jefe de Departamento</h3>
+        {/* <ul className="z-0 position-absolute top-50 start-50 translate-middle">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul> */}
+
         <button
           className="btn btn-w btn-h btn-primary mt-3 form-control"
           onClick={onReinicioClave}
