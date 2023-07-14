@@ -132,6 +132,7 @@ export const EditarPerfilEstudiante = () => {
   return (
     <>
       <div className="d-flex flex-column justify-content-center align-items-center ">
+        <br /><br />
         <h3>Editar Perfil</h3>
         <br />
         {/*Actualización de la descripcion*/}
@@ -150,7 +151,7 @@ export const EditarPerfilEstudiante = () => {
           <br />
         </div>
         <button
-          className="btn btn-w btn-h btn-primary rounded-3 mt-3"
+          className="btn p-3 btn-primary rounded-3 mt-3"
           onClick={actualizarDescripcion}
         >
           Actualizar descripción
@@ -202,7 +203,7 @@ export const EditarPerfilEstudiante = () => {
           />
 
           <button
-            className="btn btn-w btn-h btn-primary rounded-3 mt-3 mb-5"
+            className="btn p-3 btn-primary rounded-3 mt-3 mb-5"
             type="submit"
             onClick={() => subirImagen()}
             disabled={desabilitarBoton}

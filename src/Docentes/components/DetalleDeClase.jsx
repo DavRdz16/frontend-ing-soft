@@ -85,57 +85,72 @@ export const DetalleClase = () => {
 
   return (
     <>
-      {/* Detalles de la clase, información posterior
-      <div>
-        <p>Nombre de la clase</p>
-        <p>Seccción</p>
-      </div> */}
-
-      <div className="d-flex flex-column justify-content-center">
-        <div className="my-3 d-flex flex-column align-items-center">
-          <h3>Lista de Clases Asignadas</h3>
-        </div>
-
-        <div className="d-flex flex-column justify-content-center">
-          <table className="table table-striped table-hover">
-            <thead>
-              <tr>
-                <th scope="col">Nombre</th>
-                <th scope="col">Apellido</th>
-                <th scope="col">Nota</th>
-              </tr>
-            </thead>
-            <tbody>
-              {alumno &&
-                alumno.length > 0 &&
-                alumno.map((dato, index) => (
-                  <tr key={index}>
-                    <th scope="row">{dato.primer_nombre}</th>
-                    <th scope="row">{dato.primer_apellido}</th>
-                    {/* Lista de estudiantes que pertenecen a la clase */}
-                    <th scope="row">
-                      {" "}
-                      {editar && dato.num_cuenta === numCuenta ? (
-                        <>
-                          <input type="text" onChange={numeroDeEntrada} />
-                          <button onClick={handleGuardar}>Guardar</button>
-                        </>
-                      ) : (
-                        <>
-                          <p>{dato.nota}</p>
-                          <button
-                            disabled={false}
-                            onClick={() => handleEditar(dato.num_cuenta)}
-                          >
-                            Editar
-                          </button>
-                        </>
-                      )}
-                    </th>
-                  </tr>
-                ))}
-            </tbody>
-          </table>
+      <div className="container">
+        <div className="col">
+          <div className="row">
+            <div className="d-flex justify-content-center my-3">
+            <h3>Lista de Estudiantes Matriculados</h3>
+            </div>
+          </div>
+          <div className="row">
+            <table className="table table-striped table-hover">
+              <thead>
+                <tr>
+                  <th scope="col">Nombre</th>
+                  <th scope="col">Apellido</th>
+                  <th scope="col">Nota</th>
+                </tr>
+              </thead>
+              <tbody>
+                {alumno &&
+                  alumno.length > 0 &&
+                  alumno.map((dato, index) => (
+                    <tr key={index}>
+                      <th scope="row">{dato.primer_nombre}</th>
+                      <th scope="row">{dato.primer_apellido}</th>
+                      {/* Lista de estudiantes que pertenecen a la clase */}
+                      <th scope="row">
+                        {" "}
+                        {editar && dato.num_cuenta === numCuenta ? (
+                          <>
+                            <div className="container">
+                              <div className="row">
+                                <div className="col-8">
+                                  <input
+                                    className="form-control"
+                                    type="text"
+                                    onChange={numeroDeEntrada}
+                                  />
+                                </div>
+                                <div className="col-4">
+                                  <button
+                                    className="btn btn-success"
+                                    onClick={handleGuardar}
+                                  >
+                                    Guardar
+                                  </button>
+                                </div>
+                              </div>
+                            </div>
+                          </>
+                        ) : (
+                          <>
+                            <p>{dato.nota}</p>
+                            <button
+                              className="btn btn-success"
+                              disabled={false}
+                              onClick={() => handleEditar(dato.num_cuenta)}
+                            >
+                              Editar
+                            </button>
+                          </>
+                        )}
+                      </th>
+                    </tr>
+                  ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </>

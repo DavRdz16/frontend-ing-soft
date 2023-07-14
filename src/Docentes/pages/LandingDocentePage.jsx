@@ -7,8 +7,6 @@ export const LandingDocentePage = () => {
       <div className="d-flex justify-content-center align-items-center flex-column">
         <br />
         <br />
-        <br />
-        <br />
         <h3>Bienvenido Docente</h3>
         <br />
         <Link to="../perfil">

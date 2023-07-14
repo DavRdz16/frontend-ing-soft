@@ -69,7 +69,7 @@ export const PerfilDocente = () => {
         <h3 className="mt-5">Información General</h3>
         <br />
         {/* Contenedor */}
-        <div className=" row">
+        <div className=" row d-flex align-items-center">
           <div
             id="carouselExample"
             className="img-size d-flex align-items-center col-4"
@@ -92,7 +92,7 @@ export const PerfilDocente = () => {
           </div>
           {/* Datos generales */}
           {info.length > 0 && (
-            <div className="card1 p-5 col-8 d-flex flex-column align-items-start justify-content-center">
+            <div className="card1 p-5 col d-flex flex-column align-items-start justify-content-center">
               <p>Nombre: {info[0].nombres}</p>
               <p> Apellido: {info[0].apellidos}</p>
               <p>Correo Institucional {info[0].correo}</p>
@@ -114,12 +114,14 @@ export const PerfilDocente = () => {
               controls
             ></video>
           ) : (
-            <p>Sube un video precentandote a tus alumnos</p>
+            <div className=" card">
+              <p className="">Sube un video precentandote a tus alumnos</p>
+            </div>
           )}
         </div>
         <div className="mt-5 d-flex flex-colum justify-content-center">
           <Link to="../editar-perfil">
-            <button className="btn btn-w btn-h btn-primary mt-1 mb-5 ">
+            <button className="btn p-3 btn-primary mt-1 mb-5 ">
               Editar Perfil
             </button>
           </Link>

@@ -97,7 +97,7 @@ export const PerfilEstudiante = () => {
           </div>
 
           {/* Datos generales */}
-          <div className="card1 p-5 col-8 d-flex flex-column align-items-start justify-content-center">
+          <div className="card1 p-5 col d-flex flex-column align-items-start justify-content-center">
             <p>
               Nombre: {imgPerfilEstudiante.primer_nombre}{" "}
               {imgPerfilEstudiante.segundo_nombre}{" "}
@@ -123,7 +123,7 @@ export const PerfilEstudiante = () => {
 
         <div className="mt-5 d-flex flex-colum justify-content-center">
           <Link to="../EditarPerfilEstudiante">
-            <button className="btn btn-w btn-h btn-primary mt-1 mb-5 ">
+            <button className="btn p-3 btn-primary mt-1 mb-5 ">
               Editar Perfil
             </button>
           </Link>
